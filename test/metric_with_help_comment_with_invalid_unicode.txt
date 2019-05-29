@@ -1,0 +1,2 @@
+# HELP foo ø¡¡¡¡
+foo 5

@@ -1,0 +1,2 @@
+# TYPE foo untyped
+foo 5

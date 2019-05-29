@@ -1,0 +1,8 @@
+*.o
+*.a
+*.gch
+prom_example_*
+*.dSYM
+*.md
+afl*
+input*

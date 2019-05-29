@@ -1,0 +1,10 @@
+- Name: "foo"
+  Value: 5.000000
+  Timestamp: 10
+  Help: "a help message"
+  Type: counter
+- Name: "bar"
+  Value: 3.000000
+  Timestamp: 42
+  Help: "baz"
+  Type: histogram

@@ -1,0 +1,4 @@
+- Name: "malloc_bytes_total"
+  Value: 30000.000000
+  Timestamp: 42
+  Type: untyped

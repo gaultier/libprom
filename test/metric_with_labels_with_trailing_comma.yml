@@ -1,0 +1,7 @@
+- Name: "foo"
+  Value: 10.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    a: "b"
+    c: "d"

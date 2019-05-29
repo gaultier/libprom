@@ -1,0 +1,12 @@
+- Name: "malloc_bytes_total"
+  Value: 135.000000
+  Timestamp: 42
+  Type: untyped
+- Name: "malloc_bytes_allocated"
+  Value: 99.000000
+  Timestamp: 42
+  Type: untyped
+- Name: "malloc_bytes_pool"
+  Value: 79.000000
+  Timestamp: 42
+  Type: untyped

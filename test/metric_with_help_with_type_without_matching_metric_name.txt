@@ -1,0 +1,3 @@
+# HELP foo some help message
+# TYPE hello gauge
+bar 5

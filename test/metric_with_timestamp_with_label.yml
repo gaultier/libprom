@@ -1,0 +1,6 @@
+- Name: ":malloc_bytes_total99"
+  Value: 135.000000
+  Timestamp: 1557133649
+  Type: untyped
+  Labels:
+    app: "_fcgi4"

@@ -1,0 +1,4 @@
+- Name: "foo"
+  Value: inf
+  Timestamp: 42
+  Type: untyped

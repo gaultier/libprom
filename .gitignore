@@ -1,0 +1,13 @@
+*.o
+*.a
+*.gch
+prom_example_*
+*.dSYM
+bench
+test_prom
+a.out
+afl-findings/
+afl-findings2/
+input-cmin/
+input-tmin/
+input/

@@ -1,0 +1,25 @@
+# HELP foo a help message
+# This is a standard comment
+#And another one
+# TYPE foo counter
+# And a final one
+foo 5 10
+#
+
+#
+##
+####
+#  # #
+#
+
+
+
+# Some help
+# TYPE bar histogram
+# HELP bar baz
+bar 3
+# And a trailing comment which
+#will be ignored
+# HELP baz ignore me
+
+# TYPE baz untyped

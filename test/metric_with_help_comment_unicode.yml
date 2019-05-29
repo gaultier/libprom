@@ -1,0 +1,5 @@
+- Name: "foo"
+  Value: 5.000000
+  Timestamp: 42
+  Help: "hi I'm a <real> comment∀  π ∞"
+  Type: untyped

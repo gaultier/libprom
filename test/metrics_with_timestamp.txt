@@ -1,0 +1,3 @@
+malloc_bytes_total 135 1557133649
+malloc_bytes_allocated 99 1557133669
+malloc_bytes_pool 79 1557133699

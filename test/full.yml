@@ -1,0 +1,2631 @@
+- Name: "go_gc_duration_seconds"
+  Value: 0.000049
+  Timestamp: 42
+  Help: "A summary of the GC invocation durations."
+  Type: summary
+  Labels:
+    quantile: "0"
+- Name: "go_gc_duration_seconds"
+  Value: 0.000074
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    quantile: "0.25"
+- Name: "go_gc_duration_seconds"
+  Value: 0.000084
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    quantile: "0.5"
+- Name: "go_gc_duration_seconds"
+  Value: 0.000107
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    quantile: "0.75"
+- Name: "go_gc_duration_seconds"
+  Value: 0.002072
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    quantile: "1"
+- Name: "go_gc_duration_seconds_sum"
+  Value: 0.012140
+  Timestamp: 42
+  Type: untyped
+- Name: "go_gc_duration_seconds_count"
+  Value: 99.000000
+  Timestamp: 42
+  Type: untyped
+- Name: "go_goroutines"
+  Value: 33.000000
+  Timestamp: 42
+  Help: "Number of goroutines that currently exist."
+  Type: gauge
+- Name: "go_memstats_alloc_bytes"
+  Value: 17518624.000000
+  Timestamp: 42
+  Help: "Number of bytes allocated and still in use."
+  Type: gauge
+- Name: "go_memstats_alloc_bytes_total"
+  Value: 830622960.000000
+  Timestamp: 42
+  Help: "Total number of bytes allocated, even if freed."
+  Type: counter
+- Name: "go_memstats_buck_hash_sys_bytes"
+  Value: 1494637.000000
+  Timestamp: 42
+  Help: "Number of bytes used by the profiling bucket hash table."
+  Type: gauge
+- Name: "go_memstats_frees_total"
+  Value: 4656580.000000
+  Timestamp: 42
+  Help: "Total number of frees."
+  Type: counter
+- Name: "go_memstats_gc_sys_bytes"
+  Value: 1107968.000000
+  Timestamp: 42
+  Help: "Number of bytes used for garbage collection system metadata."
+  Type: gauge
+- Name: "go_memstats_heap_alloc_bytes"
+  Value: 17518624.000000
+  Timestamp: 42
+  Help: "Number of heap bytes allocated and still in use."
+  Type: gauge
+- Name: "go_memstats_heap_idle_bytes"
+  Value: 6668288.000000
+  Timestamp: 42
+  Help: "Number of heap bytes waiting to be used."
+  Type: gauge
+- Name: "go_memstats_heap_inuse_bytes"
+  Value: 18956288.000000
+  Timestamp: 42
+  Help: "Number of heap bytes that are in use."
+  Type: gauge
+- Name: "go_memstats_heap_objects"
+  Value: 72755.000000
+  Timestamp: 42
+  Help: "Number of allocated objects."
+  Type: gauge
+- Name: "go_memstats_heap_released_bytes_total"
+  Value: 0.000000
+  Timestamp: 42
+  Help: "Total number of heap bytes released to OS."
+  Type: counter
+- Name: "go_memstats_heap_sys_bytes"
+  Value: 25624576.000000
+  Timestamp: 42
+  Help: "Number of heap bytes obtained from system."
+  Type: gauge
+- Name: "go_memstats_last_gc_time_seconds"
+  Value: 1484395558.616644
+  Timestamp: 42
+  Help: "Number of seconds since 1970 of last garbage collection."
+  Type: gauge
+- Name: "go_memstats_lookups_total"
+  Value: 2089.000000
+  Timestamp: 42
+  Help: "Total number of pointer lookups."
+  Type: counter
+- Name: "go_memstats_mallocs_total"
+  Value: 4729335.000000
+  Timestamp: 42
+  Help: "Total number of mallocs."
+  Type: counter
+- Name: "go_memstats_mcache_inuse_bytes"
+  Value: 9600.000000
+  Timestamp: 42
+  Help: "Number of bytes in use by mcache structures."
+  Type: gauge
+- Name: "go_memstats_mcache_sys_bytes"
+  Value: 16384.000000
+  Timestamp: 42
+  Help: "Number of bytes used for mcache structures obtained from system."
+  Type: gauge
+- Name: "go_memstats_mspan_inuse_bytes"
+  Value: 211520.000000
+  Timestamp: 42
+  Help: "Number of bytes in use by mspan structures."
+  Type: gauge
+- Name: "go_memstats_mspan_sys_bytes"
+  Value: 245760.000000
+  Timestamp: 42
+  Help: "Number of bytes used for mspan structures obtained from system."
+  Type: gauge
+- Name: "go_memstats_next_gc_bytes"
+  Value: 20335270.000000
+  Timestamp: 42
+  Help: "Number of heap bytes when next garbage collection will take place."
+  Type: gauge
+- Name: "go_memstats_other_sys_bytes"
+  Value: 2077323.000000
+  Timestamp: 42
+  Help: "Number of bytes used for other system allocations."
+  Type: gauge
+- Name: "go_memstats_stack_inuse_bytes"
+  Value: 1638400.000000
+  Timestamp: 42
+  Help: "Number of bytes in use by the stack allocator."
+  Type: gauge
+- Name: "go_memstats_stack_sys_bytes"
+  Value: 1638400.000000
+  Timestamp: 42
+  Help: "Number of bytes obtained from system for stack allocator."
+  Type: gauge
+- Name: "go_memstats_sys_bytes"
+  Value: 32205048.000000
+  Timestamp: 42
+  Help: "Number of bytes obtained by system. Sum of all system allocations."
+  Type: gauge
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Help: "The HTTP request latencies in microseconds."
+  Type: summary
+  Labels:
+    handler: "alerts"
+    quantile: "0.5"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "alerts"
+    quantile: "0.9"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "alerts"
+    quantile: "0.99"
+- Name: "http_request_duration_microseconds_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "alerts"
+- Name: "http_request_duration_microseconds_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "alerts"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "config"
+    quantile: "0.5"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "config"
+    quantile: "0.9"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "config"
+    quantile: "0.99"
+- Name: "http_request_duration_microseconds_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "config"
+- Name: "http_request_duration_microseconds_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "config"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "consoles"
+    quantile: "0.5"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "consoles"
+    quantile: "0.9"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "consoles"
+    quantile: "0.99"
+- Name: "http_request_duration_microseconds_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "consoles"
+- Name: "http_request_duration_microseconds_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "consoles"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "drop_series"
+    quantile: "0.5"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "drop_series"
+    quantile: "0.9"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "drop_series"
+    quantile: "0.99"
+- Name: "http_request_duration_microseconds_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "drop_series"
+- Name: "http_request_duration_microseconds_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "drop_series"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "federate"
+    quantile: "0.5"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "federate"
+    quantile: "0.9"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "federate"
+    quantile: "0.99"
+- Name: "http_request_duration_microseconds_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "federate"
+- Name: "http_request_duration_microseconds_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "federate"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "flags"
+    quantile: "0.5"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "flags"
+    quantile: "0.9"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "flags"
+    quantile: "0.99"
+- Name: "http_request_duration_microseconds_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "flags"
+- Name: "http_request_duration_microseconds_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "flags"
+- Name: "http_request_duration_microseconds"
+  Value: 771.655000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "graph"
+    quantile: "0.5"
+- Name: "http_request_duration_microseconds"
+  Value: 1761.823000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "graph"
+    quantile: "0.9"
+- Name: "http_request_duration_microseconds"
+  Value: 1761.823000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "graph"
+    quantile: "0.99"
+- Name: "http_request_duration_microseconds_sum"
+  Value: 5803.930000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "graph"
+- Name: "http_request_duration_microseconds_count"
+  Value: 3.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "graph"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "heap"
+    quantile: "0.5"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "heap"
+    quantile: "0.9"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "heap"
+    quantile: "0.99"
+- Name: "http_request_duration_microseconds_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "heap"
+- Name: "http_request_duration_microseconds_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "heap"
+- Name: "http_request_duration_microseconds"
+  Value: 325.401000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "label_values"
+    quantile: "0.5"
+- Name: "http_request_duration_microseconds"
+  Value: 414.708000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "label_values"
+    quantile: "0.9"
+- Name: "http_request_duration_microseconds"
+  Value: 414.708000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "label_values"
+    quantile: "0.99"
+- Name: "http_request_duration_microseconds_sum"
+  Value: 3995.574000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "label_values"
+- Name: "http_request_duration_microseconds_count"
+  Value: 3.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "label_values"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "options"
+    quantile: "0.5"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "options"
+    quantile: "0.9"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "options"
+    quantile: "0.99"
+- Name: "http_request_duration_microseconds_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "options"
+- Name: "http_request_duration_microseconds_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "options"
+- Name: "http_request_duration_microseconds"
+  Value: 1351.859000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "prometheus"
+    quantile: "0.5"
+- Name: "http_request_duration_microseconds"
+  Value: 1714.035000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "prometheus"
+    quantile: "0.9"
+- Name: "http_request_duration_microseconds"
+  Value: 2833.523000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "prometheus"
+    quantile: "0.99"
+- Name: "http_request_duration_microseconds_sum"
+  Value: 661851.540000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "prometheus"
+- Name: "http_request_duration_microseconds_count"
+  Value: 462.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "prometheus"
+- Name: "http_request_duration_microseconds"
+  Value: 3885.448000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query"
+    quantile: "0.5"
+- Name: "http_request_duration_microseconds"
+  Value: 4390.558000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query"
+    quantile: "0.9"
+- Name: "http_request_duration_microseconds"
+  Value: 4390.558000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query"
+    quantile: "0.99"
+- Name: "http_request_duration_microseconds_sum"
+  Value: 26074.110000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query"
+- Name: "http_request_duration_microseconds_count"
+  Value: 6.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query_range"
+    quantile: "0.5"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query_range"
+    quantile: "0.9"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query_range"
+    quantile: "0.99"
+- Name: "http_request_duration_microseconds_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query_range"
+- Name: "http_request_duration_microseconds_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query_range"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "rules"
+    quantile: "0.5"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "rules"
+    quantile: "0.9"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "rules"
+    quantile: "0.99"
+- Name: "http_request_duration_microseconds_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "rules"
+- Name: "http_request_duration_microseconds_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "rules"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "series"
+    quantile: "0.5"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "series"
+    quantile: "0.9"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "series"
+    quantile: "0.99"
+- Name: "http_request_duration_microseconds_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "series"
+- Name: "http_request_duration_microseconds_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "series"
+- Name: "http_request_duration_microseconds"
+  Value: 212.311000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "static"
+    quantile: "0.5"
+- Name: "http_request_duration_microseconds"
+  Value: 265.174000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "static"
+    quantile: "0.9"
+- Name: "http_request_duration_microseconds"
+  Value: 265.174000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "static"
+    quantile: "0.99"
+- Name: "http_request_duration_microseconds_sum"
+  Value: 6458.621000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "static"
+- Name: "http_request_duration_microseconds_count"
+  Value: 3.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "static"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "status"
+    quantile: "0.5"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "status"
+    quantile: "0.9"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "status"
+    quantile: "0.99"
+- Name: "http_request_duration_microseconds_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "status"
+- Name: "http_request_duration_microseconds_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "status"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "targets"
+    quantile: "0.5"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "targets"
+    quantile: "0.9"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "targets"
+    quantile: "0.99"
+- Name: "http_request_duration_microseconds_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "targets"
+- Name: "http_request_duration_microseconds_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "targets"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "version"
+    quantile: "0.5"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "version"
+    quantile: "0.9"
+- Name: "http_request_duration_microseconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "version"
+    quantile: "0.99"
+- Name: "http_request_duration_microseconds_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "version"
+- Name: "http_request_duration_microseconds_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "version"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Help: "The HTTP request sizes in bytes."
+  Type: summary
+  Labels:
+    handler: "alerts"
+    quantile: "0.5"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "alerts"
+    quantile: "0.9"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "alerts"
+    quantile: "0.99"
+- Name: "http_request_size_bytes_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "alerts"
+- Name: "http_request_size_bytes_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "alerts"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "config"
+    quantile: "0.5"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "config"
+    quantile: "0.9"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "config"
+    quantile: "0.99"
+- Name: "http_request_size_bytes_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "config"
+- Name: "http_request_size_bytes_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "config"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "consoles"
+    quantile: "0.5"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "consoles"
+    quantile: "0.9"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "consoles"
+    quantile: "0.99"
+- Name: "http_request_size_bytes_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "consoles"
+- Name: "http_request_size_bytes_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "consoles"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "drop_series"
+    quantile: "0.5"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "drop_series"
+    quantile: "0.9"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "drop_series"
+    quantile: "0.99"
+- Name: "http_request_size_bytes_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "drop_series"
+- Name: "http_request_size_bytes_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "drop_series"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "federate"
+    quantile: "0.5"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "federate"
+    quantile: "0.9"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "federate"
+    quantile: "0.99"
+- Name: "http_request_size_bytes_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "federate"
+- Name: "http_request_size_bytes_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "federate"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "flags"
+    quantile: "0.5"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "flags"
+    quantile: "0.9"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "flags"
+    quantile: "0.99"
+- Name: "http_request_size_bytes_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "flags"
+- Name: "http_request_size_bytes_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "flags"
+- Name: "http_request_size_bytes"
+  Value: 367.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "graph"
+    quantile: "0.5"
+- Name: "http_request_size_bytes"
+  Value: 389.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "graph"
+    quantile: "0.9"
+- Name: "http_request_size_bytes"
+  Value: 389.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "graph"
+    quantile: "0.99"
+- Name: "http_request_size_bytes_sum"
+  Value: 1145.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "graph"
+- Name: "http_request_size_bytes_count"
+  Value: 3.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "graph"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "heap"
+    quantile: "0.5"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "heap"
+    quantile: "0.9"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "heap"
+    quantile: "0.99"
+- Name: "http_request_size_bytes_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "heap"
+- Name: "http_request_size_bytes_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "heap"
+- Name: "http_request_size_bytes"
+  Value: 416.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "label_values"
+    quantile: "0.5"
+- Name: "http_request_size_bytes"
+  Value: 416.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "label_values"
+    quantile: "0.9"
+- Name: "http_request_size_bytes"
+  Value: 416.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "label_values"
+    quantile: "0.99"
+- Name: "http_request_size_bytes_sum"
+  Value: 1248.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "label_values"
+- Name: "http_request_size_bytes_count"
+  Value: 3.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "label_values"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "options"
+    quantile: "0.5"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "options"
+    quantile: "0.9"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "options"
+    quantile: "0.99"
+- Name: "http_request_size_bytes_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "options"
+- Name: "http_request_size_bytes_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "options"
+- Name: "http_request_size_bytes"
+  Value: 238.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "prometheus"
+    quantile: "0.5"
+- Name: "http_request_size_bytes"
+  Value: 238.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "prometheus"
+    quantile: "0.9"
+- Name: "http_request_size_bytes"
+  Value: 238.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "prometheus"
+    quantile: "0.99"
+- Name: "http_request_size_bytes_sum"
+  Value: 109956.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "prometheus"
+- Name: "http_request_size_bytes_count"
+  Value: 462.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "prometheus"
+- Name: "http_request_size_bytes"
+  Value: 531.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query"
+    quantile: "0.5"
+- Name: "http_request_size_bytes"
+  Value: 531.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query"
+    quantile: "0.9"
+- Name: "http_request_size_bytes"
+  Value: 531.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query"
+    quantile: "0.99"
+- Name: "http_request_size_bytes_sum"
+  Value: 3186.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query"
+- Name: "http_request_size_bytes_count"
+  Value: 6.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query_range"
+    quantile: "0.5"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query_range"
+    quantile: "0.9"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query_range"
+    quantile: "0.99"
+- Name: "http_request_size_bytes_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query_range"
+- Name: "http_request_size_bytes_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query_range"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "rules"
+    quantile: "0.5"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "rules"
+    quantile: "0.9"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "rules"
+    quantile: "0.99"
+- Name: "http_request_size_bytes_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "rules"
+- Name: "http_request_size_bytes_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "rules"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "series"
+    quantile: "0.5"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "series"
+    quantile: "0.9"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "series"
+    quantile: "0.99"
+- Name: "http_request_size_bytes_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "series"
+- Name: "http_request_size_bytes_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "series"
+- Name: "http_request_size_bytes"
+  Value: 379.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "static"
+    quantile: "0.5"
+- Name: "http_request_size_bytes"
+  Value: 379.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "static"
+    quantile: "0.9"
+- Name: "http_request_size_bytes"
+  Value: 379.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "static"
+    quantile: "0.99"
+- Name: "http_request_size_bytes_sum"
+  Value: 1137.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "static"
+- Name: "http_request_size_bytes_count"
+  Value: 3.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "static"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "status"
+    quantile: "0.5"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "status"
+    quantile: "0.9"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "status"
+    quantile: "0.99"
+- Name: "http_request_size_bytes_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "status"
+- Name: "http_request_size_bytes_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "status"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "targets"
+    quantile: "0.5"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "targets"
+    quantile: "0.9"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "targets"
+    quantile: "0.99"
+- Name: "http_request_size_bytes_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "targets"
+- Name: "http_request_size_bytes_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "targets"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "version"
+    quantile: "0.5"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "version"
+    quantile: "0.9"
+- Name: "http_request_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "version"
+    quantile: "0.99"
+- Name: "http_request_size_bytes_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "version"
+- Name: "http_request_size_bytes_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "version"
+- Name: "http_requests_total"
+  Value: 3.000000
+  Timestamp: 42
+  Help: "Total number of HTTP requests made."
+  Type: counter
+  Labels:
+    code: "200"
+    handler: "graph"
+    method: "get"
+- Name: "http_requests_total"
+  Value: 3.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    code: "200"
+    handler: "label_values"
+    method: "get"
+- Name: "http_requests_total"
+  Value: 462.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    code: "200"
+    handler: "prometheus"
+    method: "get"
+- Name: "http_requests_total"
+  Value: 6.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    code: "200"
+    handler: "query"
+    method: "get"
+- Name: "http_requests_total"
+  Value: 3.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    code: "200"
+    handler: "static"
+    method: "get"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Help: "The HTTP response sizes in bytes."
+  Type: summary
+  Labels:
+    handler: "alerts"
+    quantile: "0.5"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "alerts"
+    quantile: "0.9"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "alerts"
+    quantile: "0.99"
+- Name: "http_response_size_bytes_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "alerts"
+- Name: "http_response_size_bytes_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "alerts"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "config"
+    quantile: "0.5"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "config"
+    quantile: "0.9"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "config"
+    quantile: "0.99"
+- Name: "http_response_size_bytes_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "config"
+- Name: "http_response_size_bytes_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "config"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "consoles"
+    quantile: "0.5"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "consoles"
+    quantile: "0.9"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "consoles"
+    quantile: "0.99"
+- Name: "http_response_size_bytes_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "consoles"
+- Name: "http_response_size_bytes_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "consoles"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "drop_series"
+    quantile: "0.5"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "drop_series"
+    quantile: "0.9"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "drop_series"
+    quantile: "0.99"
+- Name: "http_response_size_bytes_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "drop_series"
+- Name: "http_response_size_bytes_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "drop_series"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "federate"
+    quantile: "0.5"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "federate"
+    quantile: "0.9"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "federate"
+    quantile: "0.99"
+- Name: "http_response_size_bytes_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "federate"
+- Name: "http_response_size_bytes_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "federate"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "flags"
+    quantile: "0.5"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "flags"
+    quantile: "0.9"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "flags"
+    quantile: "0.99"
+- Name: "http_response_size_bytes_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "flags"
+- Name: "http_response_size_bytes_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "flags"
+- Name: "http_response_size_bytes"
+  Value: 3619.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "graph"
+    quantile: "0.5"
+- Name: "http_response_size_bytes"
+  Value: 3619.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "graph"
+    quantile: "0.9"
+- Name: "http_response_size_bytes"
+  Value: 3619.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "graph"
+    quantile: "0.99"
+- Name: "http_response_size_bytes_sum"
+  Value: 10857.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "graph"
+- Name: "http_response_size_bytes_count"
+  Value: 3.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "graph"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "heap"
+    quantile: "0.5"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "heap"
+    quantile: "0.9"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "heap"
+    quantile: "0.99"
+- Name: "http_response_size_bytes_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "heap"
+- Name: "http_response_size_bytes_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "heap"
+- Name: "http_response_size_bytes"
+  Value: 642.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "label_values"
+    quantile: "0.5"
+- Name: "http_response_size_bytes"
+  Value: 642.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "label_values"
+    quantile: "0.9"
+- Name: "http_response_size_bytes"
+  Value: 642.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "label_values"
+    quantile: "0.99"
+- Name: "http_response_size_bytes_sum"
+  Value: 1926.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "label_values"
+- Name: "http_response_size_bytes_count"
+  Value: 3.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "label_values"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "options"
+    quantile: "0.5"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "options"
+    quantile: "0.9"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "options"
+    quantile: "0.99"
+- Name: "http_response_size_bytes_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "options"
+- Name: "http_response_size_bytes_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "options"
+- Name: "http_response_size_bytes"
+  Value: 3033.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "prometheus"
+    quantile: "0.5"
+- Name: "http_response_size_bytes"
+  Value: 3123.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "prometheus"
+    quantile: "0.9"
+- Name: "http_response_size_bytes"
+  Value: 3128.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "prometheus"
+    quantile: "0.99"
+- Name: "http_response_size_bytes_sum"
+  Value: 1374097.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "prometheus"
+- Name: "http_response_size_bytes_count"
+  Value: 462.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "prometheus"
+- Name: "http_response_size_bytes"
+  Value: 776.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query"
+    quantile: "0.5"
+- Name: "http_response_size_bytes"
+  Value: 781.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query"
+    quantile: "0.9"
+- Name: "http_response_size_bytes"
+  Value: 781.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query"
+    quantile: "0.99"
+- Name: "http_response_size_bytes_sum"
+  Value: 4656.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query"
+- Name: "http_response_size_bytes_count"
+  Value: 6.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query_range"
+    quantile: "0.5"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query_range"
+    quantile: "0.9"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query_range"
+    quantile: "0.99"
+- Name: "http_response_size_bytes_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query_range"
+- Name: "http_response_size_bytes_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "query_range"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "rules"
+    quantile: "0.5"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "rules"
+    quantile: "0.9"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "rules"
+    quantile: "0.99"
+- Name: "http_response_size_bytes_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "rules"
+- Name: "http_response_size_bytes_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "rules"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "series"
+    quantile: "0.5"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "series"
+    quantile: "0.9"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "series"
+    quantile: "0.99"
+- Name: "http_response_size_bytes_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "series"
+- Name: "http_response_size_bytes_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "series"
+- Name: "http_response_size_bytes"
+  Value: 6316.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "static"
+    quantile: "0.5"
+- Name: "http_response_size_bytes"
+  Value: 6316.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "static"
+    quantile: "0.9"
+- Name: "http_response_size_bytes"
+  Value: 6316.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "static"
+    quantile: "0.99"
+- Name: "http_response_size_bytes_sum"
+  Value: 18948.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "static"
+- Name: "http_response_size_bytes_count"
+  Value: 3.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "static"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "status"
+    quantile: "0.5"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "status"
+    quantile: "0.9"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "status"
+    quantile: "0.99"
+- Name: "http_response_size_bytes_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "status"
+- Name: "http_response_size_bytes_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "status"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "targets"
+    quantile: "0.5"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "targets"
+    quantile: "0.9"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "targets"
+    quantile: "0.99"
+- Name: "http_response_size_bytes_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "targets"
+- Name: "http_response_size_bytes_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "targets"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "version"
+    quantile: "0.5"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "version"
+    quantile: "0.9"
+- Name: "http_response_size_bytes"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "version"
+    quantile: "0.99"
+- Name: "http_response_size_bytes_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "version"
+- Name: "http_response_size_bytes_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    handler: "version"
+- Name: "prometheus_build_info"
+  Value: 1.000000
+  Timestamp: 42
+  Help: "A metric with a constant '1' value labeled by version, revision, branch, and goversion from which prometheus was built."
+  Type: gauge
+  Labels:
+    branch: ""
+    goversion: "go1.7.3"
+    revision: ""
+    version: ""
+- Name: "prometheus_config_last_reload_success_timestamp_seconds"
+  Value: 1484395547.000000
+  Timestamp: 42
+  Help: "Timestamp of the last successful configuration reload."
+  Type: gauge
+- Name: "prometheus_config_last_reload_successful"
+  Value: 1.000000
+  Timestamp: 42
+  Help: "Whether the last configuration reload attempt was successful."
+  Type: gauge
+- Name: "prometheus_evaluator_duration_seconds"
+  Value: 0.000002
+  Timestamp: 42
+  Help: "The duration of rule group evaluations."
+  Type: summary
+  Labels:
+    quantile: "0.01"
+- Name: "prometheus_evaluator_duration_seconds"
+  Value: 0.000002
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    quantile: "0.05"
+- Name: "prometheus_evaluator_duration_seconds"
+  Value: 0.000002
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    quantile: "0.5"
+- Name: "prometheus_evaluator_duration_seconds"
+  Value: 0.000002
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    quantile: "0.9"
+- Name: "prometheus_evaluator_duration_seconds"
+  Value: 0.000002
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    quantile: "0.99"
+- Name: "prometheus_evaluator_duration_seconds_sum"
+  Value: 0.000002
+  Timestamp: 42
+  Type: untyped
+- Name: "prometheus_evaluator_duration_seconds_count"
+  Value: 1.000000
+  Timestamp: 42
+  Type: untyped
+- Name: "prometheus_evaluator_iterations_skipped_total"
+  Value: 0.000000
+  Timestamp: 42
+  Help: "The total number of rule group evaluations skipped due to throttled metric storage."
+  Type: counter
+- Name: "prometheus_notifications_dropped_total"
+  Value: 0.000000
+  Timestamp: 42
+  Help: "Total number of alerts dropped due to alert manager missing in configuration."
+  Type: counter
+- Name: "prometheus_notifications_queue_capacity"
+  Value: 10000.000000
+  Timestamp: 42
+  Help: "The capacity of the alert notifications queue."
+  Type: gauge
+- Name: "prometheus_notifications_queue_length"
+  Value: 0.000000
+  Timestamp: 42
+  Help: "The number of alert notifications in the queue."
+  Type: gauge
+- Name: "prometheus_rule_evaluation_failures_total"
+  Value: 0.000000
+  Timestamp: 42
+  Help: "The total number of rule evaluation failures."
+  Type: counter
+  Labels:
+    rule_type: "alerting"
+- Name: "prometheus_rule_evaluation_failures_total"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    rule_type: "recording"
+- Name: "prometheus_sd_azure_refresh_duration_seconds"
+  Value: nan
+  Timestamp: 42
+  Help: "The duration of a Azure-SD refresh in seconds."
+  Type: summary
+  Labels:
+    quantile: "0.5"
+- Name: "prometheus_sd_azure_refresh_duration_seconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    quantile: "0.9"
+- Name: "prometheus_sd_azure_refresh_duration_seconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    quantile: "0.99"
+- Name: "prometheus_sd_azure_refresh_duration_seconds_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+- Name: "prometheus_sd_azure_refresh_duration_seconds_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+- Name: "prometheus_sd_azure_refresh_failures_total"
+  Value: 0.000000
+  Timestamp: 42
+  Help: "Number of Azure-SD refresh failures."
+  Type: counter
+- Name: "prometheus_sd_consul_rpc_duration_seconds"
+  Value: nan
+  Timestamp: 42
+  Help: "The duration of a Consul RPC call in seconds."
+  Type: summary
+  Labels:
+    call: "service"
+    endpoint: "catalog"
+    quantile: "0.5"
+- Name: "prometheus_sd_consul_rpc_duration_seconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    call: "service"
+    endpoint: "catalog"
+    quantile: "0.9"
+- Name: "prometheus_sd_consul_rpc_duration_seconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    call: "service"
+    endpoint: "catalog"
+    quantile: "0.99"
+- Name: "prometheus_sd_consul_rpc_duration_seconds_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    call: "service"
+    endpoint: "catalog"
+- Name: "prometheus_sd_consul_rpc_duration_seconds_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    call: "service"
+    endpoint: "catalog"
+- Name: "prometheus_sd_consul_rpc_duration_seconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    call: "services"
+    endpoint: "catalog"
+    quantile: "0.5"
+- Name: "prometheus_sd_consul_rpc_duration_seconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    call: "services"
+    endpoint: "catalog"
+    quantile: "0.9"
+- Name: "prometheus_sd_consul_rpc_duration_seconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    call: "services"
+    endpoint: "catalog"
+    quantile: "0.99"
+- Name: "prometheus_sd_consul_rpc_duration_seconds_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    call: "services"
+    endpoint: "catalog"
+- Name: "prometheus_sd_consul_rpc_duration_seconds_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    call: "services"
+    endpoint: "catalog"
+- Name: "prometheus_sd_consul_rpc_failures_total"
+  Value: 0.000000
+  Timestamp: 42
+  Help: "The number of Consul RPC call failures."
+  Type: counter
+- Name: "prometheus_sd_dns_lookup_failures_total"
+  Value: 0.000000
+  Timestamp: 42
+  Help: "The number of DNS-SD lookup failures."
+  Type: counter
+- Name: "prometheus_sd_dns_lookups_total"
+  Value: 0.000000
+  Timestamp: 42
+  Help: "The number of DNS-SD lookups."
+  Type: counter
+- Name: "prometheus_sd_ec2_refresh_duration_seconds"
+  Value: nan
+  Timestamp: 42
+  Help: "The duration of a EC2-SD refresh in seconds."
+  Type: summary
+  Labels:
+    quantile: "0.5"
+- Name: "prometheus_sd_ec2_refresh_duration_seconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    quantile: "0.9"
+- Name: "prometheus_sd_ec2_refresh_duration_seconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    quantile: "0.99"
+- Name: "prometheus_sd_ec2_refresh_duration_seconds_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+- Name: "prometheus_sd_ec2_refresh_duration_seconds_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+- Name: "prometheus_sd_ec2_refresh_failures_total"
+  Value: 0.000000
+  Timestamp: 42
+  Help: "The number of EC2-SD scrape failures."
+  Type: counter
+- Name: "prometheus_sd_file_read_errors_total"
+  Value: 0.000000
+  Timestamp: 42
+  Help: "The number of File-SD read errors."
+  Type: counter
+- Name: "prometheus_sd_file_scan_duration_seconds"
+  Value: nan
+  Timestamp: 42
+  Help: "The duration of the File-SD scan in seconds."
+  Type: summary
+  Labels:
+    quantile: "0.5"
+- Name: "prometheus_sd_file_scan_duration_seconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    quantile: "0.9"
+- Name: "prometheus_sd_file_scan_duration_seconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    quantile: "0.99"
+- Name: "prometheus_sd_file_scan_duration_seconds_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+- Name: "prometheus_sd_file_scan_duration_seconds_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+- Name: "prometheus_sd_gce_refresh_duration"
+  Value: nan
+  Timestamp: 42
+  Help: "The duration of a GCE-SD refresh in seconds."
+  Type: summary
+  Labels:
+    quantile: "0.5"
+- Name: "prometheus_sd_gce_refresh_duration"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    quantile: "0.9"
+- Name: "prometheus_sd_gce_refresh_duration"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    quantile: "0.99"
+- Name: "prometheus_sd_gce_refresh_duration_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+- Name: "prometheus_sd_gce_refresh_duration_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+- Name: "prometheus_sd_gce_refresh_failures_total"
+  Value: 0.000000
+  Timestamp: 42
+  Help: "The number of GCE-SD refresh failures."
+  Type: counter
+- Name: "prometheus_sd_kubernetes_events_total"
+  Value: 0.000000
+  Timestamp: 42
+  Help: "The number of Kubernetes events handled."
+  Type: counter
+  Labels:
+    event: "add"
+    role: "endpoints"
+- Name: "prometheus_sd_kubernetes_events_total"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    event: "add"
+    role: "node"
+- Name: "prometheus_sd_kubernetes_events_total"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    event: "add"
+    role: "pod"
+- Name: "prometheus_sd_kubernetes_events_total"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    event: "add"
+    role: "service"
+- Name: "prometheus_sd_kubernetes_events_total"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    event: "delete"
+    role: "endpoints"
+- Name: "prometheus_sd_kubernetes_events_total"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    event: "delete"
+    role: "node"
+- Name: "prometheus_sd_kubernetes_events_total"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    event: "delete"
+    role: "pod"
+- Name: "prometheus_sd_kubernetes_events_total"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    event: "delete"
+    role: "service"
+- Name: "prometheus_sd_kubernetes_events_total"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    event: "update"
+    role: "endpoints"
+- Name: "prometheus_sd_kubernetes_events_total"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    event: "update"
+    role: "node"
+- Name: "prometheus_sd_kubernetes_events_total"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    event: "update"
+    role: "pod"
+- Name: "prometheus_sd_kubernetes_events_total"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    event: "update"
+    role: "service"
+- Name: "prometheus_sd_marathon_refresh_duration_seconds"
+  Value: nan
+  Timestamp: 42
+  Help: "The duration of a Marathon-SD refresh in seconds."
+  Type: summary
+  Labels:
+    quantile: "0.5"
+- Name: "prometheus_sd_marathon_refresh_duration_seconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    quantile: "0.9"
+- Name: "prometheus_sd_marathon_refresh_duration_seconds"
+  Value: nan
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    quantile: "0.99"
+- Name: "prometheus_sd_marathon_refresh_duration_seconds_sum"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+- Name: "prometheus_sd_marathon_refresh_duration_seconds_count"
+  Value: 0.000000
+  Timestamp: 42
+  Type: untyped
+- Name: "prometheus_sd_marathon_refresh_failures_total"
+  Value: 0.000000
+  Timestamp: 42
+  Help: "The number of Marathon-SD refresh failures."
+  Type: counter
+- Name: "prometheus_target_interval_length_seconds"
+  Value: 0.046182
+  Timestamp: 42
+  Help: "Actual intervals between scrapes."
+  Type: summary
+  Labels:
+    interval: "50ms"
+    quantile: "0.01"
+- Name: "prometheus_target_interval_length_seconds"
+  Value: 0.047307
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    interval: "50ms"
+    quantile: "0.05"
+- Name: "prometheus_target_interval_length_seconds"
+  Value: 0.050382
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    interval: "50ms"
+    quantile: "0.5"
+- Name: "prometheus_target_interval_length_seconds"
+  Value: 0.052615
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    interval: "50ms"
+    quantile: "0.9"
+- Name: "prometheus_target_interval_length_seconds"
+  Value: 0.054404
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    interval: "50ms"
+    quantile: "0.99"
+- Name: "prometheus_target_interval_length_seconds_sum"
+  Value: 34.512091
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    interval: "50ms"
+- Name: "prometheus_target_interval_length_seconds_count"
+  Value: 685.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    interval: "50ms"
+- Name: "prometheus_target_scrape_pool_sync_total"
+  Value: 1.000000
+  Timestamp: 42
+  Help: "Total number of syncs that were executed on a scrape pool."
+  Type: counter
+  Labels:
+    scrape_job: "prometheus"
+- Name: "prometheus_target_skipped_scrapes_total"
+  Value: 0.000000
+  Timestamp: 42
+  Help: "Total number of scrapes that were skipped because the metric storage was throttled."
+  Type: counter
+- Name: "prometheus_target_sync_length_seconds"
+  Value: 0.000200
+  Timestamp: 42
+  Help: "Actual interval to sync the scrape pool."
+  Type: summary
+  Labels:
+    scrape_job: "prometheus"
+    quantile: "0.01"
+- Name: "prometheus_target_sync_length_seconds"
+  Value: 0.000200
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    scrape_job: "prometheus"
+    quantile: "0.05"
+- Name: "prometheus_target_sync_length_seconds"
+  Value: 0.000200
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    scrape_job: "prometheus"
+    quantile: "0.5"
+- Name: "prometheus_target_sync_length_seconds"
+  Value: 0.000200
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    scrape_job: "prometheus"
+    quantile: "0.9"
+- Name: "prometheus_target_sync_length_seconds"
+  Value: 0.000200
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    scrape_job: "prometheus"
+    quantile: "0.99"
+- Name: "prometheus_target_sync_length_seconds_sum"
+  Value: 0.000200
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    scrape_job: "prometheus"
+- Name: "prometheus_target_sync_length_seconds_count"
+  Value: 1.000000
+  Timestamp: 42
+  Type: untyped
+  Labels:
+    scrape_job: "prometheus"
+- Name: "prometheus_treecache_watcher_goroutines"
+  Value: 0.000000
+  Timestamp: 42
+  Help: "The current number of watcher goroutines."
+  Type: gauge
+- Name: "prometheus_treecache_zookeeper_failures_total"
+  Value: 0.000000
+  Timestamp: 42
+  Help: "The total number of ZooKeeper failures."
+  Type: counter

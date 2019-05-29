@@ -1,0 +1,1 @@
+:malloc_bytes_total99{app="_fcgiπ ∞4"} 135 1557133649

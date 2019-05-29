@@ -1,0 +1,5 @@
+- Name: "malloc_bytes_total"
+  Value: 135.000000
+  Timestamp: 1557133649
+  Help: "this is a help message"
+  Type: untyped

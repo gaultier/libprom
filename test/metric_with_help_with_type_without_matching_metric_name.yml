@@ -1,0 +1,5 @@
+- Name: "bar"
+  Value: 5.000000
+  Timestamp: 42
+  Help: "some help message"
+  Type: gauge
