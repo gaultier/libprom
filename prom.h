@@ -51,10 +51,5 @@ struct metric {
 };
 
 int prom_parse(const unsigned char* s, size_t s_size, long long int ms_now,
-               struct metric** metrics, size_t* metrics_size,
-               size_t* metrics_capacity,
+               size_t* i, struct metric* m,
                void* (*realloc_fn)(void* ptr, size_t size));
-
-int prom_parse_2(const unsigned char* s, size_t s_size, long long int ms_now,
-                 size_t* i, struct metric* m,
-                 void* (*realloc_fn)(void* ptr, size_t size));

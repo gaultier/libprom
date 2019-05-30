@@ -90,7 +90,7 @@ int main(int argc, char* argv[]) {
 
     size_t i = 0;
     struct metric m;
-    while ((err = prom_parse_2(input, input_size, ms_now, &i, &m, realloc)) ==
+    while ((err = prom_parse(input, input_size, ms_now, &i, &m, realloc)) ==
            PROM_PARSE_METRIC_OK) {
         metric_to_yml(&m);
         free(m.labels);

@@ -481,9 +481,9 @@ static int parse_help(struct prom_parser* p, int ret,
     return 0;
 }
 
-int prom_parse_2(const unsigned char* s, size_t s_size, long long int ms_now,
-                 size_t* i, struct metric* m,
-                 void* (*realloc_fn)(void* ptr, size_t size)) {
+int prom_parse(const unsigned char* s, size_t s_size, long long int ms_now,
+               size_t* i, struct metric* m,
+               void* (*realloc_fn)(void* ptr, size_t size)) {
     if (*i >= s_size) return PROM_PARSE_END;
 
     struct prom_parser p = {.realloc_fn = realloc_fn,
