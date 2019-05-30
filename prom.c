@@ -484,6 +484,8 @@ static int parse_help(struct prom_parser* p, int ret,
 int prom_parse_2(const unsigned char* s, size_t s_size, long long int ms_now,
                  size_t* i, struct metric* m,
                  void* (*realloc_fn)(void* ptr, size_t size)) {
+    if (*i >= s_size) return PROM_PARSE_END;
+
     struct prom_parser p = {.realloc_fn = realloc_fn,
                             .l = {.s = s, .s_size = s_size, .i = i},
                             .ms_now = ms_now,
@@ -500,7 +502,6 @@ int prom_parse_2(const unsigned char* s, size_t s_size, long long int ms_now,
         if ((ret = lex_next(&p.l)) < 0) {
             return ret;
         }
-        if (ret == PROM_LEX_END) return PROM_PARSE_END;
         if (ret == PROM_LEX_NEWLINE) continue;
         if (ret == PROM_LEX_COMMENT) {
             if ((ret = lex_next(&p.l)) < 0) {
@@ -523,6 +524,7 @@ int prom_parse_2(const unsigned char* s, size_t s_size, long long int ms_now,
             continue;
         }
         if (ret == PROM_LEX_METRIC_NAME) break;
+        if (*i >= s_size) return PROM_PARSE_END;
     }
 
     if (ret == PROM_LEX_METRIC_NAME) {
@@ -559,18 +561,15 @@ int prom_parse_2(const unsigned char* s, size_t s_size, long long int ms_now,
             if (ret != PROM_LEX_NEWLINE) {
                 return PROM_PARSE_MISSING_NEWLINE;
             }
+            return PROM_PARSE_METRIC_OK;
 
         } else if (ret == PROM_LEX_NEWLINE) {
             p.m->timestamp = p.ms_now;
+            return PROM_PARSE_METRIC_OK;
         } else {
             return PROM_PARSE_MISSING_NEWLINE;
         }
     }
 
-    if ((ret = lex_next(&p.l)) < 0) {
-        return ret;
-    }
-    if (ret == PROM_LEX_END) return PROM_PARSE_END;
-    if (ret == PROM_LEX_NEWLINE) return PROM_PARSE_METRIC_OK;
     return PROM_PARSE_UNREACHABLE;
 }
