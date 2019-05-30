@@ -284,9 +284,7 @@ static int lex(struct lex* l) {
             if (l->s[l->i] == '"' && l->s[l->i - 1] != '\\') break;
             l->i += 1;
         }
-        if (l->s[l->i] != '"') {
-            return PROM_PARSE_UNTERMINATED_STRING;
-        }
+        if (l->s[l->i] != '"') return PROM_PARSE_UNTERMINATED_STRING;
 
         l->i += 1;
         l->state = LEX_STATE_LABELS;
@@ -524,9 +522,8 @@ int prom_parse(const unsigned char* s, size_t s_size, long long int ms_now,
             p.m->timestamp = p.ms_now;
             *i = p.l.i;
             return PROM_PARSE_METRIC_OK;
-        } else {
+        } else
             return PROM_PARSE_MISSING_NEWLINE;
-        }
     }
 
     return PROM_PARSE_UNREACHABLE;
