@@ -357,12 +357,10 @@ static int parse_labels(struct prom_parser* p, int ret) {
         if (ret == PROM_LEX_LABEL_NAME) {
             size_t label_name_size = p->l.i - p->l.start;
             p->m->labels_size += 1;
-            if (p->m->labels_size > p->m->labels_capacity) {
-                p->m->labels_capacity = 10 + p->m->labels_capacity * 2;
-                p->m->labels = p->realloc_fn(
-                    p->m->labels, sizeof(struct label) * p->m->labels_capacity);
-                if (p->m->labels == NULL) return PROM_PARSE_ENOMEM;
-            }
+            p->m->labels = p->realloc_fn(
+                p->m->labels, sizeof(struct label) * p->m->labels_size);
+            if (p->m->labels == NULL) return PROM_PARSE_ENOMEM;
+
             struct label* label = &p->m->labels[p->m->labels_size - 1];
             label->label_name = p->l.s + p->l.start;
             label->label_name_size = label_name_size;

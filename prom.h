@@ -50,7 +50,6 @@ struct metric {
     // Labels
     struct label* labels;
     size_t labels_size;
-    size_t labels_capacity;
 };
 
 int prom_parse(const unsigned char* s, size_t s_size, long long int ms_now,
