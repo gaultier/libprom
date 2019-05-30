@@ -76,7 +76,14 @@ static int file_read(int fd, unsigned char** out, size_t* out_size) {
 }
 
 int main(int argc, char* argv[]) {
-    if (argc != 3) return 1;
+    if (argc != 3) {
+        printf(
+            "Usage: %s <file> <timestamp>\n"
+            "Converts the Prometheus text format for metrics to yaml on "
+            "stdout.\n",
+            argv[0]);
+        return 1;
+    }
     int err = 0;
     long long int ms_now = strtoll(argv[2], NULL, 10);
 
