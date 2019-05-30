@@ -392,14 +392,12 @@ static int parse_labels(struct prom_parser* p, int ret) {
 
 static int parse_type(struct prom_parser* p, int ret) {
     if (ret != PROM_LEX_TYPE) return ret;
-    if ((ret = lex_next(&p->l)) < 0) {
-        return ret;
-    }
+    if ((ret = lex_next(&p->l)) < 0) return ret;
+
     if (ret != PROM_LEX_METRIC_NAME) return PROM_PARSE_MISSING_HELP_METRIC_NAME;
 
-    if ((ret = lex_next(&p->l)) < 0) {
-        return ret;
-    }
+    if ((ret = lex_next(&p->l)) < 0) return ret;
+
     if (ret != PROM_LEX_TEXT) return PROM_PARSE_MISSING_TYPE_TEXT;
 
     const char gauge[] = {'g', 'a', 'u', 'g', 'e'};
@@ -426,26 +424,23 @@ static int parse_type(struct prom_parser* p, int ret) {
     else
         return PROM_PARSE_UNKNOWN_TYPE_TEXT;
 
-    if ((ret = lex_next(&p->l)) < 0) {
-        return ret;
-    }
+    if ((ret = lex_next(&p->l)) < 0) return ret;
+
     if (ret != PROM_LEX_NEWLINE) return PROM_PARSE_MISSING_NEWLINE;
     return 0;
 }
 
 static int parse_help(struct prom_parser* p, int ret) {
     if (ret != PROM_LEX_HELP) return ret;
-    if ((ret = lex_next(&p->l)) < 0) {
-        return ret;
-    }
+    if ((ret = lex_next(&p->l)) < 0) return ret;
+
     if (ret != PROM_LEX_METRIC_NAME) return PROM_PARSE_MISSING_HELP_METRIC_NAME;
 
     p->m->help = p->l.s + p->l.start;
     p->m->help_size = p->l.i - p->l.start;
 
-    if ((ret = lex_next(&p->l)) < 0) {
-        return ret;
-    }
+    if ((ret = lex_next(&p->l)) < 0) return ret;
+
     if (ret != PROM_LEX_TEXT) return PROM_PARSE_MISSING_HELP_TEXT;
     if (utf8_naive(p->l.s + p->l.start, p->l.i - p->l.start) != 0)
         return PROM_PARSE_INVALID_UTF8;
@@ -453,9 +448,8 @@ static int parse_help(struct prom_parser* p, int ret) {
     p->m->help = p->l.s + p->l.start;
     p->m->help_size = p->l.i - p->l.start;
 
-    if ((ret = lex_next(&p->l)) < 0) {
-        return ret;
-    }
+    if ((ret = lex_next(&p->l)) < 0) return ret;
+
     if (ret != PROM_LEX_NEWLINE) return PROM_PARSE_MISSING_NEWLINE;
     return 0;
 }
@@ -475,14 +469,12 @@ int prom_parse(const unsigned char* s, size_t s_size, long long int ms_now,
     *(p.m) = (struct metric){0};
 
     while (1) {
-        if ((ret = lex_next(&p.l)) < 0) {
-            return ret;
-        }
+        if ((ret = lex_next(&p.l)) < 0) return ret;
+
         if (ret == PROM_LEX_NEWLINE) continue;
         if (ret == PROM_LEX_COMMENT) {
-            if ((ret = lex_next(&p.l)) < 0) {
-                return ret;
-            }
+            if ((ret = lex_next(&p.l)) < 0) return ret;
+
             if (ret != PROM_LEX_NEWLINE) return PROM_PARSE_MISSING_NEWLINE;
 
             continue;
@@ -503,35 +495,28 @@ int prom_parse(const unsigned char* s, size_t s_size, long long int ms_now,
         p.m->metric_name = p.l.s + p.l.start;
         p.m->metric_name_size = p.l.i - p.l.start;
 
-        if ((ret = lex_next(&p.l)) < 0) {
-            return ret;
-        }
+        if ((ret = lex_next(&p.l)) < 0) return ret;
+
         if ((ret = parse_labels(&p, ret)) < 0) return ret;
 
-        if (ret != PROM_LEX_METRIC_VALUE) {
+        if (ret != PROM_LEX_METRIC_VALUE)
             return PROM_PARSE_MISSING_METRIC_VALUE;
-        }
 
         char* e = NULL;
         p.m->value = strtod((const char*)(p.l.s + p.l.start), &e);
         const char* normal_end = (const char*)(&p.l.s[p.l.i]);
-        if (e && e != normal_end) {
-            return PROM_PARSE_INVALID_FLOAT;
-        }
+        if (e && e != normal_end) return PROM_PARSE_INVALID_FLOAT;
 
-        if ((ret = lex_next(&p.l)) < 0) {
-            return ret;
-        }
+        if ((ret = lex_next(&p.l)) < 0) return ret;
+
         if (ret == PROM_LEX_TIMESTAMP) {
             p.m->timestamp = strtoll((const char*)(p.l.s + p.l.start), &e, 10);
             if (errno == ERANGE) return PROM_PARSE_TIMESTAMP_OVERFLOW;
 
-            if ((ret = lex_next(&p.l)) < 0) {
-                return ret;
-            }
-            if (ret != PROM_LEX_NEWLINE) {
-                return PROM_PARSE_MISSING_NEWLINE;
-            }
+            if ((ret = lex_next(&p.l)) < 0) return ret;
+
+            if (ret != PROM_LEX_NEWLINE) return PROM_PARSE_MISSING_NEWLINE;
+
             *i = p.l.i;
             return PROM_PARSE_METRIC_OK;
 
