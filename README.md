@@ -1,6 +1,6 @@
 # Libprom
 
-A minimalistic, C99 library to parse Prometheus metrics in their text format. It only depends on libc and does not allocate itself (you can pass it your custom allocator). See `example.c` for usage.
+A minimalistic, C99 library to parse Prometheus metrics in their text format. It only depends on libc and does not allocate itself (you can pass it your custom allocator). See `example.c` and `example_cxx.cpp` for usage.
 
 ## Use it
 
