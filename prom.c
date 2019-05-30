@@ -348,12 +348,10 @@ static int parse_labels(struct prom_parser* p, int ret) {
     if (ret != PROM_LEX_CURLY_BRACE_LEFT) return ret;
 
     while (1) {
-        if ((ret = lex_next(&p->l)) < 0) {
-            return ret;
-        }
-        if (ret == PROM_LEX_CURLY_BRACE_RIGHT) {
-            break;
-        }
+        if ((ret = lex_next(&p->l)) < 0) return ret;
+
+        if (ret == PROM_LEX_CURLY_BRACE_RIGHT) break;
+
         if (ret == PROM_LEX_LABEL_NAME) {
             size_t label_name_size = p->l.i - p->l.start;
             p->m->labels_size += 1;
@@ -365,16 +363,12 @@ static int parse_labels(struct prom_parser* p, int ret) {
             label->label_name = p->l.s + p->l.start;
             label->label_name_size = label_name_size;
 
-            if ((ret = lex_next(&p->l)) < 0) {
-                return ret;
-            }
-            if (ret != PROM_LEX_EQUAL) {
-                return PROM_PARSE_UNREACHABLE;
-            }
+            if ((ret = lex_next(&p->l)) < 0) return ret;
 
-            if ((ret = lex_next(&p->l)) < 0) {
-                return ret;
-            }
+            if (ret != PROM_LEX_EQUAL) return PROM_PARSE_UNREACHABLE;
+
+            if ((ret = lex_next(&p->l)) < 0) return ret;
+
             if (ret != PROM_LEX_LABEL_VALUE) return PROM_PARSE_UNREACHABLE;
 
             size_t label_value_size = p->l.i - p->l.start;
@@ -383,19 +377,15 @@ static int parse_labels(struct prom_parser* p, int ret) {
             if (utf8_naive(label->label_value, label->label_value_size) != 0)
                 return PROM_PARSE_INVALID_UTF8;
 
-            if ((ret = lex_next(&p->l)) < 0) {
-                return ret;
-            }
+            if ((ret = lex_next(&p->l)) < 0) return ret;
 
             if (ret != PROM_LEX_COMMA) break;
-        } else {
+        } else
             return PROM_PARSE_UNREACHABLE;
-        }
     }
 
-    if (ret != PROM_LEX_CURLY_BRACE_RIGHT) {
+    if (ret != PROM_LEX_CURLY_BRACE_RIGHT)
         return PROM_PARSE_MISSING_CLOSING_CURLY_BRACKET;
-    }
 
     return lex_next(&p->l);
 }
