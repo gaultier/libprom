@@ -35,7 +35,7 @@ static void metric_to_yml(const struct metric* m) {
         case PROM_METRIC_TYPE_SUMMARY:
             printf("summary");
             break;
-        default:
+        case PROM_METRIC_TYPE_UNTYPED:
             printf("untyped");
             break;
     }
@@ -64,14 +64,14 @@ static int file_read(int fd, unsigned char** out, size_t* out_size) {
         close(fd);
         return errno;
     }
-    size_t size = stat.st_size;
+    size_t size = (size_t)stat.st_size;
 
     *out = calloc(1, 1 + size);
 
-    size_t nread = read(fd, *out, size);
-    if (nread < size) return errno;
-    *out_size = size;
+    ssize_t nread = read(fd, *out, size);
+    if (nread == -1 || ((size_t)nread < size)) return errno;
 
+    *out_size += (size_t)nread;
     return 0;
 }
 
