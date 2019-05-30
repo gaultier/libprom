@@ -31,7 +31,9 @@ Errors are just an int defined in `prom.h` (`PROM_PARSE_x` defines). They should
 
 ## Develop
 
-Build: `make libprom_debug.a` for the library and `make prom_example_debug` for the example.
+Build: `make libprom_debug.a` for the library and `make prom_example_debug` for the example. 
+
+Note: When using gcc, you will need to override the warnings like that: `make CFLAGS_COMMON="-std=c99 -Wall" <target>` (see Dockerfile for example).
 
 Test: `make check_debug`.
 
