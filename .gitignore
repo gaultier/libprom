@@ -4,6 +4,7 @@
 prom_example_*
 *.dSYM
 bench
+example_cxx
 test_prom
 a.out
 afl-findings/

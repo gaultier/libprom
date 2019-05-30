@@ -12,6 +12,9 @@ all: prom_example_release
 
 build: prom_example_release
 
+example_cxx: example_cxx.cpp
+	$(CXX) -std=c++17 $^ -o $@ -lprom -L .
+
 prom_debug.o: prom.c prom.h
 	$(CC) $(CFLAGS_DEBUG) -c prom.c -o $@
 

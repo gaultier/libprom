@@ -3,6 +3,7 @@
 *.gch
 prom_example_*
 bench/
+example_cxx
 *.dSYM
 *.md
 afl*
