@@ -45,7 +45,7 @@ dbuild:
 	docker build -t $(DOCKER_IMAGE):$(DOCKER_TAG) .
 
 clean:
-	rm -rf *.dSYM *.o *.gch prom_example_debug prom_example_release libprom*.a
+	rm -rf *.dSYM *.o *.gch prom_example_debug prom_example_release libprom*.a example_cxx
 
 install: prom_example_release
 	cp prom_example_release $(DESTDIR)/bin/prom_example
