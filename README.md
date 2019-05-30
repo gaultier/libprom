@@ -21,7 +21,7 @@ Also, all strings must contain UTF-8 (and this is checked), and are **not** null
 ## Differences with the official Prometheus implemention
 
 - Libprom does not sort labels within a metric
-- Prometheus post-processes the metrics after parsing them to check if the metric name in a `TYPE` or `HELP` comment matches the metric name in the following metric line, or the group of metrics in case of a histogram or summary.
+- Prometheus post-processes the metrics after parsing them to check if the metric name in a `TYPE` or `HELP` comment matches the metric name in the following metric line, or the group of metrics in case of a histogram or summary. Libprom does not do any post-processing.
 
 
 ## Error handling
