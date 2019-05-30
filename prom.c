@@ -1,6 +1,5 @@
 #include "prom.h"
 #include <errno.h>   // errno on strtoll, strtod
-#include <stddef.h>  // size_t
 #include <stdlib.h>  // strtoll, strtod
 #include <string.h>  // memcmp
 
@@ -483,7 +482,8 @@ int prom_parse(const unsigned char* s, size_t s_size, long long int ms_now,
                             .ms_now = ms_now,
                             .m = m};
     int ret = 0;
-    // NOTE: some allocated memory, not freed, could be leaked here
+    // NOTE: some allocated memory in a former call, if not freed by the caller,
+    // could be leaked here, for the field `labels`
     *(p.m) = (struct metric){0};
 
     while (1) {
@@ -525,7 +525,6 @@ int prom_parse(const unsigned char* s, size_t s_size, long long int ms_now,
         }
 
         char* e = NULL;
-        // TODO: handle null termination
         p.m->value = strtod((const char*)(p.l.s + p.l.start), &e);
         const char* normal_end = (const char*)(&p.l.s[p.l.i]);
         if (e && e != normal_end) {

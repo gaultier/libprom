@@ -1,6 +1,6 @@
 #pragma once
 
-#include <stddef.h>
+#include <stddef.h>  // size_t
 
 #define PROM_PARSE_METRIC_OK 1
 #define PROM_PARSE_END 0
@@ -37,7 +37,6 @@ enum PROM_METRIC_TYPE {
 struct metric {
     const unsigned char* metric_name;
     size_t metric_name_size;
-    // Should maybe be long long int
     double value;
     long long int timestamp;
     const unsigned char* help;
