@@ -9,7 +9,7 @@ A minimalistic, C99 library to parse Prometheus metrics in their text format. It
 - Link it with `-lprom`
 - Use the only function: `prom_parse`
 
-Working with Docker: Build the Docker image containing `libprom.a`: `make dbuild`
+Build the Docker image containing `libprom.a`: `make dbuild`
 
 ## Ownership system
 
