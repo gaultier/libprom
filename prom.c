@@ -404,17 +404,12 @@ static int parse_labels(struct prom_parser* p, int ret) {
     return lex_next(&p->l);
 }
 
-static int parse_type(struct prom_parser* p, int ret,
-                      size_t* type_metric_name_start,
-                      size_t* type_metric_name_size) {
+static int parse_type(struct prom_parser* p, int ret) {
     if (ret != PROM_LEX_TYPE) return ret;
     if ((ret = lex_next(&p->l)) < 0) {
         return ret;
     }
     if (ret != PROM_LEX_METRIC_NAME) return PROM_PARSE_MISSING_HELP_METRIC_NAME;
-
-    *type_metric_name_start = p->l.start;
-    *type_metric_name_size = *p->l.i - p->l.start;
 
     if ((ret = lex_next(&p->l)) < 0) {
         return ret;
@@ -452,17 +447,15 @@ static int parse_type(struct prom_parser* p, int ret,
     return 0;
 }
 
-static int parse_help(struct prom_parser* p, int ret,
-                      size_t* help_metric_name_start,
-                      size_t* help_metric_name_size) {
+static int parse_help(struct prom_parser* p, int ret) {
     if (ret != PROM_LEX_HELP) return ret;
     if ((ret = lex_next(&p->l)) < 0) {
         return ret;
     }
     if (ret != PROM_LEX_METRIC_NAME) return PROM_PARSE_MISSING_HELP_METRIC_NAME;
 
-    *help_metric_name_start = p->l.start;
-    *help_metric_name_size = *p->l.i - p->l.start;
+    p->m->help = p->l.s + p->l.start;
+    p->m->help_size = *p->l.i - p->l.start;
 
     if ((ret = lex_next(&p->l)) < 0) {
         return ret;
@@ -491,10 +484,6 @@ int prom_parse(const unsigned char* s, size_t s_size, long long int ms_now,
                             .ms_now = ms_now,
                             .m = m};
     int ret = 0;
-    size_t help_metric_name_start = 0;
-    size_t help_metric_name_size = 0;
-    size_t type_metric_name_start = 0;
-    size_t type_metric_name_size = 0;
     // NOTE: some allocated memory, not freed, could be leaked here
     *(p.m) = (struct metric){0};
 
@@ -512,15 +501,11 @@ int prom_parse(const unsigned char* s, size_t s_size, long long int ms_now,
             continue;
         }
         if (ret == PROM_LEX_HELP) {
-            if ((ret = parse_help(&p, ret, &help_metric_name_start,
-                                  &help_metric_name_size)) < 0)
-                return ret;
+            if ((ret = parse_help(&p, ret)) < 0) return ret;
             continue;
         }
         if (ret == PROM_LEX_TYPE) {
-            if ((ret = parse_type(&p, ret, &type_metric_name_start,
-                                  &type_metric_name_size)) < 0)
-                return ret;
+            if ((ret = parse_type(&p, ret)) < 0) return ret;
             continue;
         }
         if (ret == PROM_LEX_METRIC_NAME) break;
