@@ -90,13 +90,14 @@ int main(int argc, char* argv[]) {
 
     size_t i = 0;
     struct metric m;
-    while ((err = prom_parse_2(input, input_size, ms_now, &i, &m, realloc)) <
-           0) {
+    while (1) {
+        err = prom_parse_2(input, input_size, ms_now, &i, &m, realloc);
+        if (err < 0) {
+            printf("%d\n", err);
+            return err;
+        }
         metric_to_yml(&m);
         free(m.labels);
-    }
-    if (err < 0) {
-        printf("%d\n", err);
-        return err;
+        if (err == 0) return 0;
     }
 }

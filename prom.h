@@ -2,6 +2,7 @@
 
 #include <stddef.h>
 
+#define PROM_PARSE_METRIC_OK 1
 #define PROM_PARSE_END 0
 #define PROM_PARSE_INVALID_FLOAT -1
 #define PROM_PARSE_MISSING_NEWLINE -2
