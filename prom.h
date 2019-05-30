@@ -1,5 +1,9 @@
 #pragma once
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stddef.h>  // size_t
 
 #define PROM_PARSE_METRIC_OK 1
@@ -52,3 +56,7 @@ struct metric {
 int prom_parse(const unsigned char* s, size_t s_size, long long int ms_now,
                size_t* i, struct metric* m,
                void* (*realloc_fn)(void* ptr, size_t size));
+
+#ifdef __cplusplus
+}
+#endif
