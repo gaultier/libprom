@@ -2,6 +2,7 @@
 *.a
 *.gch
 prom_example_*
+bench/
 *.dSYM
 *.md
 afl*
