@@ -1,7 +1,7 @@
 .POSIX:
 .SUFFIX:
 
-CFLAGS_COMMON ?= -std=c99  -Wall -Wextra -Wunused -Wpedantic
+CFLAGS_COMMON ?= -std=c99 -Weverything
 CFLAGS_RELEASE ?= $(CFLAGS_COMMON) -DNODEBUG -O2 
 CFLAGS_DEBUG ?= $(CFLAGS_COMMON) -g -fsanitize=address -O0
 DESTDIR ?= /usr/local

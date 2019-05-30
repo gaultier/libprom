@@ -6,11 +6,11 @@
 
 // From https://github.com/cyb70289/utf8/blob/master/naive.c
 /* Return 0 - success,  >0 - index(1 based) of first error char */
-static int utf8_naive(const unsigned char* data, int len) {
+static int utf8_naive(const unsigned char* data, size_t len) {
     int err_pos = 1;
 
     while (len) {
-        int bytes;
+        unsigned int bytes;
         const unsigned char byte1 = data[0];
 
         /* 00..7F */
@@ -151,8 +151,10 @@ static int lex(struct lex* l) {
         *l->i += 1;
 
         while (buf_at(l->s, l->s_size, *l->i) == ' ' ||
-               buf_at(l->s, l->s_size, *l->i) == '\t')
-            l->start = *l->i, *l->i += 1;
+               buf_at(l->s, l->s_size, *l->i) == '\t') {
+            l->start = *l->i;
+            *l->i += 1;
+        }
 
         l->state = LEX_STATE_COMMENT;
     } else if (buf_at(l->s, l->s_size, *l->i) == '#') {
@@ -528,7 +530,7 @@ int prom_parse(const unsigned char* s, size_t s_size, long long int ms_now,
         char* e = NULL;
         // TODO: handle null termination
         p.m->value = strtod((const char*)(p.l.s + p.l.start), &e);
-        const char* normal_end = (char*)(&p.l.s[*p.l.i]);
+        const char* normal_end = (const char*)(&p.l.s[*p.l.i]);
         if (e && e != normal_end) {
             return PROM_PARSE_INVALID_FLOAT;
         }
