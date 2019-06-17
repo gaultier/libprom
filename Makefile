@@ -5,7 +5,7 @@ LIB_TYPE ?= static
 BUILD_TYPE ?= release
 
 CFLAGS_COMMON ?= -std=c99 -Weverything -Wno-padded
-CFLAGS_Release ?= $(CFLAGS_COMMON) -DNDEBUG -O2
+CFLAGS_release ?= $(CFLAGS_COMMON) -DNDEBUG -O2
 CFLAGS_debug ?= $(CFLAGS_COMMON) -g -fsanitize=address -O0
 DESTDIR ?= /usr/local
 DOCKER_IMAGE ?= prom
@@ -13,7 +13,7 @@ DOCKER_TAG ?= latest
 
 LIB_SUFFIX_dynamic_MACOS := dylib
 LIB_SUFFIX_dynamic_LINUX := so
-OS != uname | awk '/Darwin/ {print "MACOS"} !/Darwin/ {print "LINUX"}'
+OS := $(shell uname | awk '/Darwin/ {print "MACOS"} !/Darwin/ {print "LINUX"}')
 LIB_SUFFIX_dynamic := $(LIB_SUFFIX_dynamic_$(OS))
 LIB_SUFFIX_static := a
 LIB_release_static := libprom_release.$(LIB_SUFFIX_static)
@@ -70,7 +70,7 @@ dbuild:
 	docker build -t $(DOCKER_IMAGE):$(DOCKER_TAG) --build-arg LIB_TYPE=$(LIB_TYPE) .
 
 clean:
-	rm -rf *.dSYM *.o *.gch prom_example* libprom*.a example_cxx
+	rm -rf *.dSYM *.o *.gch prom_example* libprom* example_cxx
 
 install: $(LIB)
 	cp $^  $(DESTDIR)/lib/$^
