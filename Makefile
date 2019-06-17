@@ -10,18 +10,23 @@ CFLAGS_debug ?= $(CFLAGS_COMMON) -g -fsanitize=address -O0
 DESTDIR ?= /usr/local
 DOCKER_IMAGE ?= prom
 DOCKER_TAG ?= latest
-LIB_release_static = libprom_release.a
-LIB_release_dynamic = libprom_release.dylib
-LIB_debug_static = libprom_debug.a
-LIB_debug_dynamic = libprom_debug.dylib
-LIB_SUFFIX_dynamic_MACOS = dylib
-LIB_SUFFIX_dynamic_LINUX = so
+LIB_release_static := libprom_release.a
+LIB_release_dynamic := libprom_release.dylib
+LIB_debug_static := libprom_debug.a
+LIB_debug_dynamic := libprom_debug.dylib
+LIB_SUFFIX_dynamic_MACOS := dylib
+LIB_SUFFIX_dynamic_LINUX := so
 OS := $(shell uname | awk '/Darwin/ {print "MACOS"} !/Darwin/ {print "LINUX"}')
-LIB_SUFFIX_dynamic = $(LIB_SUFFIX_dynamic_$(OS))
-LIB_SUFFIX_static = a
-LIB_SUFFIX = $(LIB_SUFFIX_$(LIB_TYPE))
-LIB = libprom_$(BUILD_TYPE).$(LIB_SUFFIX)
-EXAMPLE = prom_example_$(BUILD_TYPE)_$(LIB_TYPE)
+LIB_SUFFIX_dynamic := $(LIB_SUFFIX_dynamic_$(OS))
+LIB_SUFFIX_static := a
+LIB_SUFFIX := $(LIB_SUFFIX_$(LIB_TYPE))
+LIB := libprom_$(BUILD_TYPE).$(LIB_SUFFIX)
+EXAMPLE := prom_example_$(BUILD_TYPE)_$(LIB_TYPE)
+$(info $$LIB is [${LIB}])
+$(info $$OS is [${OS}])
+$(info $$LIB_SUFFIX_dynamic is [${LIB_SUFFIX_dynamic}])
+$(info $$LIB_SUFFIX is [${LIB_SUFFIX}])
+$(info $$LIB_TYPE is [${LIB_TYPE}])
 
 all: build
 
@@ -66,7 +71,7 @@ check: $(EXAMPLE)
 	(for f in `ls test/*.txt | awk -F '.' '{print $$1}'`; do ./$^ $$f.txt 42 | diff $$f.yml - && printf "%s\t\033[32mOK\033[0m\n" $$f || printf "%s\t\033[31mFAIL\033[0m\n" $$f;done;)
 
 dbuild:
-	docker build -t $(DOCKER_IMAGE):$(DOCKER_TAG) .
+	docker build -t $(DOCKER_IMAGE):$(DOCKER_TAG) --build-arg LIB_TYPE=$(LIB_TYPE) .
 
 clean:
 	rm -rf *.dSYM *.o *.gch prom_example* libprom*.a example_cxx
