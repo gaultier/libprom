@@ -1,6 +1,7 @@
 *.o
 *.a
 *.gch
+*.dylib
 prom_example_*
 *.dSYM
 bench

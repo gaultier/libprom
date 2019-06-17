@@ -14,10 +14,17 @@ LIB_release_static = libprom_release.a
 LIB_release_dynamic = libprom_release.dylib
 LIB_debug_static = libprom_debug.a
 LIB_debug_dynamic = libprom_debug.dylib
+LIB_SUFFIX_dynamic = dylib
+LIB_SUFFIX_static = a
+LIB_SUFFIX = $(LIB_SUFFIX_$(LIB_TYPE))
+LIB = libprom_$(BUILD_TYPE).$(LIB_SUFFIX)
+EXAMPLE = prom_example_$(BUILD_TYPE)_$(LIB_TYPE)
 
-all: prom_example_$(BUILD_TYPE)
+all: build
 
-build: prom_example_$(BUILD_TYPE)
+build: libprom_$(BUILD_TYPE).$(LIB_SUFFIX)
+
+example: $(EXAMPLE)
 
 example_cxx: example_cxx.cpp
 	$(CXX) -std=c++17 $^ -o $@ -lprom -L .
@@ -28,25 +35,32 @@ prom_debug.o: prom.c prom.h
 prom_release.o: prom.c prom.h
 	$(CC) $(CFLAGS_release) -c prom.c -o $@
 
-libprom_debug.a: prom_debug.o
+$(LIB_debug_static): prom_debug.o
 	$(AR) rvs $@ $^
 
-libprom_release.a: prom_release.o
+$(LIB_debug_dynamic): prom_debug.o
+	$(CC) -shared $^ -o $@ -lasan
+
+$(LIB_release_static): prom_release.o
 	$(AR) rvs $@ $^
 
-prom_example_debug: example.c libprom_debug.a
+libprom_release.dylib: prom_release.o
+	$(CC) -shared $^ -o $@
+
+prom_example_debug_static: example.c $(LIB_debug_static)
 	$(CC) $(CFLAGS_debug) -o $@ $^
 
-prom_example_release: example.c libprom_release.a
+prom_example_debug_dynamic: example.c $(LIB_debug_dynamic)
+	$(CC) $(CFLAGS_debug) -o $@ example.c -L . -l $(LIB_debug_dynamic)
+
+prom_example_release_static: example.c $(LIB_release_static)
 	$(CC) $(CFLAGS_release) -o $@ $^ 
 
-check_debug: prom_example_debug
-	(for f in `ls test/*.txt | awk -F '.' '{print $$1}'`; do ./$^ $$f.txt 42 | diff --from-file=$$f.yml - && printf "%s\t\033[32mOK\033[0m\n" $$f || printf "%s\t\033[31mFAIL\033[0m\n" $$f;done;) | column -t;
+prom_example_release_dynamic: example.c $(LIB_release_dynamic)
+	$(CC) $(CFLAGS_release) -o $@ example.c -L . -l $(LIB_release_dynamic)
 
-check_release: prom_example_release
-	for f in `ls test/*.txt | awk -F '.' '{print $$1}'`; do ./$^ $$f.txt 42 | diff -q $$f.yml -; done; 
-
-check: check_$(BUILD_TYPE)
+check: $(EXAMPLE)
+	(for f in `ls test/*.txt | awk -F '.' '{print $$1}'`; do ./$^ $$f.txt 42 | diff --from-file=$$f.yml - && printf "%s\t\033[32mOK\033[0m\n" $$f || printf "%s\t\033[31mFAIL\033[0m\n" $$f;done;)
 
 dbuild:
 	docker build -t $(DOCKER_IMAGE):$(DOCKER_TAG) .
@@ -54,9 +68,9 @@ dbuild:
 clean:
 	rm -rf *.dSYM *.o *.gch prom_example* libprom*.a example_cxx
 
-install: prom_example
-	cp prom_example_$(BUILD_TYPE) $(DESTDIR)/bin/prom_example_$(BUILD_TYPE)
-	cp libprom_$(BUILD_TYPE).a $(DESTDIR)/lib/libprom_$(BUILD_TYPE).a
+install: $(LIB)
+	cp $^  $(DESTDIR)/lib/$^
+	ln -s $(DESTDIR)/lib/$^ $(DESTDIR)/lib/libprom.$(LIB_SUFFIX)
 
-.PHONY: all build check clean dbuild check check_debug check_release install
+.PHONY: all build check clean dbuild check install example
 
