@@ -55,13 +55,13 @@ prom_example_debug_static: example.c $(LIB_debug_static)
 	$(CC) $(CFLAGS_debug) -o $@ $^
 
 prom_example_debug_dynamic: example.c $(LIB_debug_dynamic)
-	$(CC) $(CFLAGS_debug) -o $@ example.c -L . -lprom_$(BUILD_TYPE)
+	$(CC) $(CFLAGS_debug) -o $@ example.c -Xlinker -rpath . -L . -lprom_$(BUILD_TYPE)
 
 prom_example_release_static: example.c $(LIB_release_static)
 	$(CC) $(CFLAGS_release) -o $@ $^ 
 
 prom_example_release_dynamic: example.c $(LIB_release_dynamic)
-	$(CC) $(CFLAGS_release) -o $@ example.c -L . -lprom_$(BUILD_TYPE)
+	$(CC) $(CFLAGS_release) -o $@ example.c -Xlinker -rpath . -L . -lprom_$(BUILD_TYPE)
 
 check: $(EXAMPLE)
 	(for f in `ls test/*.txt | awk -F '.' '{print $$1}'`; do ./$^ $$f.txt 42 | diff $$f.yml - && printf "%s\t\033[32mOK\033[0m\n" $$f || printf "%s\t\033[31mFAIL\033[0m\n" $$f;done;)
