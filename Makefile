@@ -63,7 +63,7 @@ prom_example_release_dynamic: example.c $(LIB_release_dynamic)
 	$(CC) $(CFLAGS_release) -o $@ example.c -L . -l $(LIB_release_dynamic)
 
 check: $(EXAMPLE)
-	(for f in `ls test/*.txt | awk -F '.' '{print $$1}'`; do ./$^ $$f.txt 42 | diff --from-file=$$f.yml - && printf "%s\t\033[32mOK\033[0m\n" $$f || printf "%s\t\033[31mFAIL\033[0m\n" $$f;done;)
+	(for f in `ls test/*.txt | awk -F '.' '{print $$1}'`; do ./$^ $$f.txt 42 | diff $$f.yml - && printf "%s\t\033[32mOK\033[0m\n" $$f || printf "%s\t\033[31mFAIL\033[0m\n" $$f;done;)
 
 dbuild:
 	docker build -t $(DOCKER_IMAGE):$(DOCKER_TAG) .
