@@ -2,7 +2,7 @@
 .SUFFIX:
 
 CFLAGS_COMMON ?= -std=c99 -Weverything -Wno-padded
-CFLAGS_RELEASE ?= $(CFLAGS_COMMON) -DNODEBUG -O2 
+CFLAGS_RELEASE ?= $(CFLAGS_COMMON) -DNDEBUG -O2
 CFLAGS_DEBUG ?= $(CFLAGS_COMMON) -g -fsanitize=address -O0
 DESTDIR ?= /usr/local
 DOCKER_IMAGE ?= prom
