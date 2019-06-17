@@ -31,7 +31,7 @@ build: libprom_$(BUILD_TYPE).$(LIB_SUFFIX)
 example: $(EXAMPLE)
 
 example_cxx: example_cxx.cpp
-	$(CXX) -std=c++17 $^ -o $@ -lprom -L .
+	$(CXX) -std=c++17 $< -o $@ -lprom -L .
 
 prom_debug.o: prom.c prom.h
 	$(CC) $(CFLAGS_debug) -c prom.c -o $@
@@ -40,31 +40,31 @@ prom_release.o: prom.c prom.h
 	$(CC) $(CFLAGS_release) -c prom.c -o $@
 
 $(LIB_debug_static): prom_debug.o
-	$(AR) rvs $@ $^
+	$(AR) $(ARFLAGS) $@ $<
 
 $(LIB_debug_dynamic): prom_debug.o
-	$(CC) -shared $^ -o $@ -lasan
+	$(CC) -shared $< -o $@ -lasan
 
 $(LIB_release_static): prom_release.o
-	$(AR) rvs $@ $^
+	$(AR) $(ARFLAGS) $@ $<
 
 $(LIB_release_dynamic): prom_release.o
-	$(CC) -shared $^ -o $@
+	$(CC) -shared $< -o $@
 
 prom_example_debug_static: example.c $(LIB_debug_static)
-	$(CC) $(CFLAGS_debug) -o $@ $^
+	$(CC) $(CFLAGS_debug) -o $@ example.c $(LIB_debug_static)
 
 prom_example_debug_dynamic: example.c $(LIB_debug_dynamic)
 	$(CC) $(CFLAGS_debug) -o $@ example.c -Xlinker -rpath . -L . -lprom_$(BUILD_TYPE)
 
 prom_example_release_static: example.c $(LIB_release_static)
-	$(CC) $(CFLAGS_release) -o $@ $^ 
+	$(CC) $(CFLAGS_release) -o $@ example.c $(LIB_release_static)
 
 prom_example_release_dynamic: example.c $(LIB_release_dynamic)
 	$(CC) $(CFLAGS_release) -o $@ example.c -Xlinker -rpath . -L . -lprom_$(BUILD_TYPE)
 
 check: $(EXAMPLE)
-	(for f in `ls test/*.txt | awk -F '.' '{print $$1}'`; do ./$^ $$f.txt 42 | diff $$f.yml - && printf "%s\t\033[32mOK\033[0m\n" $$f || printf "%s\t\033[31mFAIL\033[0m\n" $$f;done;)
+	(for f in `ls test/*.txt | awk -F '.' '{print $$1}'`; do ./$< $$f.txt 42 | diff $$f.yml - && printf "%s\t\033[32mOK\033[0m\n" $$f || printf "%s\t\033[31mFAIL\033[0m\n" $$f;done;)
 
 dbuild:
 	docker build -t $(DOCKER_IMAGE):$(DOCKER_TAG) --build-arg LIB_TYPE=$(LIB_TYPE) .
@@ -73,8 +73,8 @@ clean:
 	rm -rf *.dSYM *.o *.gch prom_example* libprom* example_cxx
 
 install: $(LIB)
-	cp $^  $(DESTDIR)/lib/$^
-	ln -s $(DESTDIR)/lib/$^ $(DESTDIR)/lib/libprom.$(LIB_SUFFIX)
+	cp $<  $(DESTDIR)/lib/$<
+	ln -s $(DESTDIR)/lib/$< $(DESTDIR)/lib/libprom.$(LIB_SUFFIX)
 
 .PHONY: all build check clean dbuild check install example
 
