@@ -1,11 +1,12 @@
-ARG LIB_TYPE
 FROM alpine:3.9 as BUILDER
 RUN apk update && apk add make gcc libc-dev
+ARG LIB_TYPE
 
 WORKDIR /prom
 COPY . .
+ENV LIB_TYPE ${LIB_TYPE}
 # Default flags contain '-Weverything' which is clang only
-RUN make CFLAGS_COMMON="-std=c99 -Wall -Wextra -Wpedantic" LIB_TYPE=${LIB_TYPE} build check install
+RUN make --stop CFLAGS_COMMON="-std=c99 -Wall -Wextra -Wpedantic" build check install
 
 FROM alpine:3.9 as runner 
 COPY --from=BUILDER /usr/local/lib/libprom.a /usr/local/lib/libprom.a
