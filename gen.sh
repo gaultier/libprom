@@ -33,7 +33,6 @@ else
     LIB_LINK_CMD="\$(CC) -shared -o \$@ ${LIBPROM_OBJECT_FILE}"
 fi
 
-
 echo ".POSIX:"
 echo ".SUFFIX:"
 echo ""
@@ -63,6 +62,9 @@ echo "	echo \$(DESTDIR)/lib/libprom.${LIB_SUFFIX} >> install.txt"
 echo ""
 echo "clean:"
 echo "	rm -rf *.dSYM *.o *.gch prom_example* libprom* example_cxx install.txt"
+echo ""
+echo "dbuild:"
+echo "	docker build -t \$(DOCKER_IMAGE):\$(DOCKER_TAG) --build-arg LIB_TYPE=${LIB_TYPE} ."
 echo ""
 echo ".PHONY: all build check clean dbuild check install example"
 
