@@ -48,7 +48,7 @@ echo ""
 echo "build: ${LIB}"
 echo ""
 echo "${LIBPROM_OBJECT_FILE}: prom.c prom.h"
-echo '	$(CC) $(CFLAGS) -c prom.c -o $@'
+echo "	\$(CC) \$(CFLAGS) -c prom.c -o \$@"
 echo ""
 echo "${LIB_NAME}: ${LIBPROM_OBJECT_FILE}"
 echo "	${LIB_LINK_CMD}"
