@@ -24,6 +24,7 @@ LIB_SUFFIX := $(LIB_SUFFIX_$(LIB_TYPE))
 LIB := libprom_$(BUILD_TYPE).$(LIB_SUFFIX)
 EXAMPLE := prom_example_$(BUILD_TYPE)_$(LIB_TYPE)
 
+.DEFAULT:
 all: build
 
 build: libprom_$(BUILD_TYPE).$(LIB_SUFFIX)
@@ -40,16 +41,16 @@ prom_release.o: prom.c prom.h
 	$(CC) $(CFLAGS_release) -c prom.c -o $@
 
 $(LIB_debug_static): prom_debug.o
-	$(AR) $(ARFLAGS) $@ $<
+	$(AR) $(ARFLAGS) $@ prom_debug.o
 
 $(LIB_debug_dynamic): prom_debug.o
-	$(CC) -shared $< -o $@ -lasan
+	$(CC) -shared prom_debug.o -o $@ -lasan
 
 $(LIB_release_static): prom_release.o
-	$(AR) $(ARFLAGS) $@ $<
+	$(AR) $(ARFLAGS) $@ prom_release.o
 
 $(LIB_release_dynamic): prom_release.o
-	$(CC) -shared $< -o $@
+	$(CC) -shared prom_release.o -o $@
 
 prom_example_debug_static: example.c $(LIB_debug_static)
 	$(CC) $(CFLAGS_debug) -o $@ example.c $(LIB_debug_static)
@@ -70,11 +71,15 @@ dbuild:
 	docker build -t $(DOCKER_IMAGE):$(DOCKER_TAG) --build-arg LIB_TYPE=$(LIB_TYPE) .
 
 clean:
-	rm -rf *.dSYM *.o *.gch prom_example* libprom* example_cxx
+	rm -rf *.dSYM *.o *.gch prom_example* libprom* example_cxx install.txt
 
 install: $(LIB)
-	cp $<  $(DESTDIR)/lib/$<
-	ln -s $(DESTDIR)/lib/$< $(DESTDIR)/lib/libprom.$(LIB_SUFFIX)
+	cp prom.h $(DESTDIR)/include/prom.h
+	echo $(DESTDIR)/include/prom.h > install.txt
+	cp $(LIB)  $(DESTDIR)/lib/$(LIB)
+	ln -s $(DESTDIR)/lib/$(LIB) $(DESTDIR)/lib/libprom.$(LIB_SUFFIX)
+	echo $(DESTDIR)/lib/$(LIB) >> install.txt
+	echo $(DESTDIR)/lib/libprom.$(LIB_SUFFIX) >> install.txt
 
 .PHONY: all build check clean dbuild check install example
 
