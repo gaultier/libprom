@@ -13,7 +13,7 @@ DOCKER_TAG ?= latest
 
 LIB_SUFFIX_dynamic_MACOS := dylib
 LIB_SUFFIX_dynamic_LINUX := so
-OS := $(shell uname | awk '/Darwin/ {print "MACOS"} !/Darwin/ {print "LINUX"}')
+OS != uname | awk '/Darwin/ {print "MACOS"} !/Darwin/ {print "LINUX"}'
 LIB_SUFFIX_dynamic := $(LIB_SUFFIX_dynamic_$(OS))
 LIB_SUFFIX_static := a
 LIB_release_static := libprom_release.$(LIB_SUFFIX_static)
