@@ -40,6 +40,18 @@ else
     LIB_LINK_CMD="\$(CC) -shared -o \$@ ${LIBPROM_OBJECT_FILE}"
 fi
 
+EXAMPLE_NAME="prom_example_${BUILD_TYPE}_${LIB_TYPE}"
+
+
+if [ "$LIB_TYPE" = "static" ]
+then
+	EXAMPLE_LDFLAGS=""
+	EXAMPLE_LDLIBS="${LIB_BASE_NAME}"
+else
+	EXAMPLE_LDFLAGS="-Xlinker -rpath . -L ."
+	EXAMPLE_LDLIBS="-l${LIB_BASE_NAME}"
+fi
+
 echo ".POSIX:"
 echo ".SUFFIX:"
 echo ""
@@ -47,17 +59,24 @@ echo "CFLAGS ?= ${CFLAGS}"
 echo "DESTDIR ?= /usr/local"
 echo "DOCKER_IMAGE ?= prom"
 echo "DOCKER_TAG ?= latest"
+echo "LDFLAGS ?= ${EXAMPLE_LDFLAGS}"
+echo "LDLIBS ?= ${EXAMPLE_LDLIBS}"
 echo ""
 echo ".DEFAULT:"
 echo "all: build"
 echo ""
 echo "build: ${LIB_NAME}"
 echo ""
+echo "example: ${EXAMPLE_NAME}"
+echo ""
 echo "${LIBPROM_OBJECT_FILE}: prom.c prom.h"
 echo "	\$(CC) \$(CFLAGS) -c prom.c -o \$@"
 echo ""
 echo "${LIB_NAME}: ${LIBPROM_OBJECT_FILE}"
 echo "	${LIB_LINK_CMD}"
+echo ""
+echo "${EXAMPLE_NAME}: example.c ${LIB_NAME}"
+echo "	\$(CC) \$(CFLAGS) -o \$@ example.c \$(LDFLAGS) \$(LDLIBS)"
 echo ""
 echo "install: ${LIB_NAME}"
 echo "	cp prom.h \$(DESTDIR)/include/prom.h"
