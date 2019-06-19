@@ -7,9 +7,16 @@ OS=$(uname)
 
 if [ "$OS" = "Darwin" ]
 then
-  LIB_SUFFIX="dylib"
+  LIB_DYNAMIC_SUFFIX="dylib"
 else
-  LIB_SUFFIX="so"
+  LIB_DYNAMIC_SUFFIX="so"
+fi
+
+if [ "$LIB_TYPE" = "static" ]
+then
+	LIB_SUFFIX="a"
+else
+	LIB_SUFFIX="$LIB_DYNAMIC_SUFFIX"
 fi
 
 LIB_BASE_NAME="prom_${BUILD_TYPE}_${LIB_TYPE}"
@@ -44,7 +51,7 @@ echo ""
 echo ".DEFAULT:"
 echo "all: build"
 echo ""
-echo "build: ${LIB}"
+echo "build: ${LIB_NAME}"
 echo ""
 echo "${LIBPROM_OBJECT_FILE}: prom.c prom.h"
 echo "	\$(CC) \$(CFLAGS) -c prom.c -o \$@"
