@@ -1,8 +1,22 @@
 #!/bin/sh
 
-#echo "$LIB_TYPE"
-#echo "$BUILD_TYPE"
-#echo "$ASAN"
+if [ "$LIB_TYPE" != "static" ] || [ "$LIB_TYPE" != "dynamic" ]
+then
+	echo "LIB_TYPE: must be static|dynamic"
+	exit 1
+fi
+
+if [ "$BUILD_TYPE" != "debug" ] || [ "$BUILD_TYPE" != "release" ]
+then
+	echo "BUILD_TYPE: must be debug|release"
+	exit 1
+fi
+
+if [ "$ASAN" != "0" ] || [ "$ASAN" != "1" ]
+then
+	echo "ASAN: must be 0|1"
+	exit 1
+fi
 
 OS=$(uname)
 
