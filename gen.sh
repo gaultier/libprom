@@ -1,18 +1,19 @@
 #!/bin/sh
 
-if [ "$LIB_TYPE" != "static" ] || [ "$LIB_TYPE" != "dynamic" ]
+if [ "$LIB_TYPE" != "static" ] && [ "$LIB_TYPE" != "dynamic" ]
 then
 	echo "LIB_TYPE: must be static|dynamic"
+	echo "Was given: LIB_TYPE='$LIB_TYPE'"
 	exit 1
 fi
 
-if [ "$BUILD_TYPE" != "debug" ] || [ "$BUILD_TYPE" != "release" ]
+if [ "$BUILD_TYPE" != "debug" ] && [ "$BUILD_TYPE" != "release" ]
 then
 	echo "BUILD_TYPE: must be debug|release"
 	exit 1
 fi
 
-if [ "$ASAN" != "0" ] || [ "$ASAN" != "1" ]
+if [ "$ASAN" != "0" ] && [ "$ASAN" != "1" ]
 then
 	echo "ASAN: must be 0|1"
 	exit 1
