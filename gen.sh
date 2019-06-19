@@ -1,4 +1,5 @@
 #!/bin/sh
+set -Eeuo pipefail
 
 if [ "$LIB_TYPE" != "static" ] && [ "$LIB_TYPE" != "dynamic" ]
 then
