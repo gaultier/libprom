@@ -2,7 +2,8 @@
 *.a
 *.gch
 *.dylib
-Makefile # generated
+# generated
+Makefile
 prom_example_*
 *.dSYM
 bench
