@@ -2,6 +2,7 @@
 
 #echo "$LIB_TYPE"
 #echo "$BUILD_TYPE"
+#echo "$ASAN"
 
 OS=$(uname)
 
@@ -46,10 +47,15 @@ EXAMPLE_NAME="prom_example_${BUILD_TYPE}_${LIB_TYPE}"
 if [ "$LIB_TYPE" = "static" ]
 then
 	EXAMPLE_LDFLAGS=""
-	EXAMPLE_LDLIBS="${LIB_BASE_NAME}"
+	EXAMPLE_LDLIBS="${LIB_NAME}"
 else
 	EXAMPLE_LDFLAGS="-Xlinker -rpath . -L ."
 	EXAMPLE_LDLIBS="-l${LIB_BASE_NAME}"
+fi
+
+if [ "$ASAN" = "1" ]
+then
+	EXAMPLE_LDFLAGS="$EXAMPLE_LDFLAGS -fsanitize=address"
 fi
 
 echo ".POSIX:"
