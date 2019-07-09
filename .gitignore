@@ -1,17 +1,5 @@
 *.o
-*.a
 *.gch
-*.dylib
-# generated
-Makefile
-prom_example_*
-*.dSYM
-bench
+example_c
 example_cxx
-test_prom
-a.out
-afl-findings/
-afl-findings2/
-input-cmin/
-input-tmin/
-input/
+*.dSYM

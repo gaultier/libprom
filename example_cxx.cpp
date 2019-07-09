@@ -7,6 +7,7 @@
 std::array<struct label, 5> _labels;
 
 void* custom_alloc(void* ptr, size_t size) {
+    (void)ptr;
     if (size <= sizeof(struct label) * _labels.size()) return _labels.data();
     throw std::bad_alloc{};
 }
