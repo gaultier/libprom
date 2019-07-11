@@ -23,7 +23,7 @@ extern "C" {
 #define PROM_PARSE_ENOMEM -13
 #define PROM_PARSE_UNREACHABLE -100
 
-struct label {
+struct prom_label {
     const unsigned char* label_name;
     size_t label_name_size;
     const unsigned char* label_value;
@@ -48,7 +48,7 @@ struct metric {
     enum PROM_METRIC_TYPE type;
     size_t type_size;
     // Labels
-    struct label* labels;
+    struct prom_label* labels;
     size_t labels_size;
 };
 
@@ -411,13 +411,14 @@ static int parse_labels(struct prom_parser* p, int ret) {
         if (ret == PROM_LEX_LABEL_NAME) {
             size_t label_name_size = p->l.i - p->l.start;
             p->m->labels_size += 1;
-            p->m->labels = (struct label*)p->realloc_fn(
-                p->m->labels, sizeof(struct label) * p->m->labels_size);
+            p->m->labels = (struct prom_label*)p->realloc_fn(
+                p->m->labels, sizeof(struct prom_label) * p->m->labels_size);
             if (p->m->labels == NULL) return PROM_PARSE_ENOMEM;
 
-            struct label* label = &p->m->labels[p->m->labels_size - 1];
-            label->label_name = p->l.s + p->l.start;
-            label->label_name_size = label_name_size;
+            struct prom_label* prom_label =
+                &p->m->labels[p->m->labels_size - 1];
+            prom_label->label_name = p->l.s + p->l.start;
+            prom_label->label_name_size = label_name_size;
 
             if ((ret = lex_next(&p->l)) < 0) return ret;
 
@@ -428,9 +429,10 @@ static int parse_labels(struct prom_parser* p, int ret) {
             if (ret != PROM_LEX_LABEL_VALUE) return PROM_PARSE_UNREACHABLE;
 
             size_t label_value_size = p->l.i - p->l.start;
-            label->label_value = p->l.s + p->l.start;
-            label->label_value_size = label_value_size - 1;
-            if (utf8_naive(label->label_value, label->label_value_size) != 0)
+            prom_label->label_value = p->l.s + p->l.start;
+            prom_label->label_value_size = label_value_size - 1;
+            if (utf8_naive(prom_label->label_value,
+                           prom_label->label_value_size) != 0)
                 return PROM_PARSE_INVALID_UTF8;
 
             if ((ret = lex_next(&p->l)) < 0) return ret;

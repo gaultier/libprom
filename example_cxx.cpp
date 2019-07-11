@@ -4,11 +4,12 @@
 #include <string>
 #include <vector>
 
-std::array<struct label, 5> _labels;
+std::array<struct prom_label, 5> _labels;
 
 void* custom_alloc(void* ptr, size_t size) {
     (void)ptr;
-    if (size <= sizeof(struct label) * _labels.size()) return _labels.data();
+    if (size <= sizeof(struct prom_label) * _labels.size())
+        return _labels.data();
     throw std::bad_alloc{};
 }
 
@@ -26,7 +27,7 @@ int main() {
                   << std::endl;
 
         for (size_t i = 0; i < m.labels_size; i++) {
-            struct label l = m.labels[i];
+            struct prom_label l = m.labels[i];
             std::cout << std::string{(const char*)l.label_name,
                                      l.label_name_size}
                       << std::endl;
