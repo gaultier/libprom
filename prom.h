@@ -143,7 +143,7 @@ enum PROM_LEX {
     PROM_LEX_COMMENT = 19,
 };
 
-enum lex_state {
+enum prom_lex_state {
     LEX_STATE_INIT = 0,
     LEX_STATE_TIMESTAMP = 1,
     LEX_STATE_STRING = 2,
@@ -161,7 +161,7 @@ enum lex_state {
 struct prom_lex {
     const unsigned char* s;
     size_t s_size;
-    enum lex_state state;
+    enum prom_lex_state state;
     size_t i;
     size_t start;
 };
