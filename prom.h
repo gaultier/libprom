@@ -63,7 +63,7 @@ int prom_parse(const unsigned char* s, size_t s_size, long long int ms_now,
 
 // From https://github.com/cyb70289/utf8/blob/master/naive.c
 /* Return 0 - success,  >0 - index(1 based) of first error char */
-static int utf8_naive(const unsigned char* data, size_t len) {
+static int prom_utf8_naive(const unsigned char* data, size_t len) {
     int err_pos = 1;
 
     while (len) {
@@ -431,8 +431,8 @@ static int parse_labels(struct prom_parser* p, int ret) {
             size_t label_value_size = p->l.i - p->l.start;
             prom_label->label_value = p->l.s + p->l.start;
             prom_label->label_value_size = label_value_size - 1;
-            if (utf8_naive(prom_label->label_value,
-                           prom_label->label_value_size) != 0)
+            if (prom_utf8_naive(prom_label->label_value,
+                                prom_label->label_value_size) != 0)
                 return PROM_PARSE_INVALID_UTF8;
 
             if ((ret = lex_next(&p->l)) < 0) return ret;
@@ -500,7 +500,7 @@ static int parse_help(struct prom_parser* p, int ret) {
     if ((ret = lex_next(&p->l)) < 0) return ret;
 
     if (ret != PROM_LEX_TEXT) return PROM_PARSE_MISSING_HELP_TEXT;
-    if (utf8_naive(p->l.s + p->l.start, p->l.i - p->l.start) != 0)
+    if (prom_utf8_naive(p->l.s + p->l.start, p->l.i - p->l.start) != 0)
         return PROM_PARSE_INVALID_UTF8;
 
     p->m->help = p->l.s + p->l.start;
