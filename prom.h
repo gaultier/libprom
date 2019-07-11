@@ -57,9 +57,10 @@ int prom_parse(const unsigned char* s, size_t s_size, long long int ms_now,
                void* (*realloc_fn)(void* ptr, size_t size));
 
 // Start the implementation (i.e private stuff)
-#include <errno.h>   // errno on strtoll, strtod
-#include <stdlib.h>  // strtoll, strtod
-#include <string.h>  // memcmp
+#include <errno.h>    // errno on strtoll, strtod
+#include <stdlib.h>   // strtoll, strtod
+#include <string.h>   // memcmp
+#include <strings.h>  // bzero
 
 // From https://github.com/cyb70289/utf8/blob/master/naive.c
 /* Return 0 - success,  >0 - index(1 based) of first error char */
@@ -515,14 +516,19 @@ int prom_parse(const unsigned char* s, size_t s_size, long long int ms_now,
                void* (*realloc_fn)(void* ptr, size_t size)) {
     if (*i >= s_size) return PROM_PARSE_END;
 
-    struct prom_parser p = {.realloc_fn = realloc_fn,
-                            .l = {.s = s, .s_size = s_size, .i = *i},
-                            .ms_now = ms_now,
-                            .m = m};
+    struct prom_parser p;
+    bzero(&p, sizeof(p));
+    p.realloc_fn = realloc_fn;
+    p.l.s = s;
+    p.l.s_size = s_size;
+    p.l.i = *i;
+    p.ms_now = ms_now;
+    p.m = m;
+
     int ret = 0;
     // NOTE: some allocated memory in a former call, if not freed by the caller,
     // could be leaked here, for the field `labels`
-    *(p.m) = (struct metric){0};
+    bzero(p.m, sizeof(*p.m));
 
     while (1) {
         if ((ret = lex_next(&p.l)) < 0) return ret;
