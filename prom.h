@@ -176,80 +176,83 @@ static int c_is_alpha_or_underscore_or_colon(unsigned int c) {
     return c_is_alpha_or_underscore(c) || c == ':';
 }
 
-static unsigned char buf_at(const unsigned char* s, size_t s_size, size_t i) {
+static unsigned char prom_buf_at(const unsigned char* s, size_t s_size,
+                                 size_t i) {
     return i < s_size ? s[i] : '\0';
 }
 
 static int lex(struct lex* l) {
-    if (buf_at(l->s, l->s_size, l->i) == '\0') return PROM_LEX_END;
+    if (prom_buf_at(l->s, l->s_size, l->i) == '\0') return PROM_LEX_END;
 
-    if (buf_at(l->s, l->s_size, l->i) == '\n') {
+    if (prom_buf_at(l->s, l->s_size, l->i) == '\n') {
         l->state = LEX_STATE_INIT;
         l->start = l->i;
         l->i += 1;
         return PROM_LEX_NEWLINE;
     }
 
-    if (buf_at(l->s, l->s_size, l->i) == ' ' ||
-        buf_at(l->s, l->s_size, l->i) == '\t') {
+    if (prom_buf_at(l->s, l->s_size, l->i) == ' ' ||
+        prom_buf_at(l->s, l->s_size, l->i) == '\t') {
         l->start = l->i;
 
-        while (buf_at(l->s, l->s_size, l->i) == ' ' ||
-               buf_at(l->s, l->s_size, l->i) == '\t')
+        while (prom_buf_at(l->s, l->s_size, l->i) == ' ' ||
+               prom_buf_at(l->s, l->s_size, l->i) == '\t')
             l->i += 1;
 
         return PROM_LEX_WHITESPACE;
     }
 
-    if (buf_at(l->s, l->s_size, l->i) == '#' &&
-        (buf_at(l->s, l->s_size, l->i + 1) == ' ' ||
-         buf_at(l->s, l->s_size, l->i + 1) == '\t')) {
+    if (prom_buf_at(l->s, l->s_size, l->i) == '#' &&
+        (prom_buf_at(l->s, l->s_size, l->i + 1) == ' ' ||
+         prom_buf_at(l->s, l->s_size, l->i + 1) == '\t')) {
         l->start = l->i;
         l->i += 1;
 
-        while (buf_at(l->s, l->s_size, l->i) == ' ' ||
-               buf_at(l->s, l->s_size, l->i) == '\t') {
+        while (prom_buf_at(l->s, l->s_size, l->i) == ' ' ||
+               prom_buf_at(l->s, l->s_size, l->i) == '\t') {
             l->start = l->i;
             l->i += 1;
         }
 
         l->state = LEX_STATE_COMMENT;
-    } else if (buf_at(l->s, l->s_size, l->i) == '#') {
+    } else if (prom_buf_at(l->s, l->s_size, l->i) == '#') {
         l->start = l->i;
         // Normal comment, free text
-        while (l->i < l->s_size && buf_at(l->s, l->s_size, l->i) != '\n')
+        while (l->i < l->s_size && prom_buf_at(l->s, l->s_size, l->i) != '\n')
             l->i += 1;
         return PROM_LEX_COMMENT;
     }
 
-    if (l->state == LEX_STATE_COMMENT && buf_at(l->s, l->s_size, l->i) == 'H' &&
-        buf_at(l->s, l->s_size, l->i + 1) == 'E' &&
-        buf_at(l->s, l->s_size, l->i + 2) == 'L' &&
-        buf_at(l->s, l->s_size, l->i + 3) == 'P' &&
-        (buf_at(l->s, l->s_size, l->i + 4) == ' ' ||
-         buf_at(l->s, l->s_size, l->i + 4) == '\t')) {
+    if (l->state == LEX_STATE_COMMENT &&
+        prom_buf_at(l->s, l->s_size, l->i) == 'H' &&
+        prom_buf_at(l->s, l->s_size, l->i + 1) == 'E' &&
+        prom_buf_at(l->s, l->s_size, l->i + 2) == 'L' &&
+        prom_buf_at(l->s, l->s_size, l->i + 3) == 'P' &&
+        (prom_buf_at(l->s, l->s_size, l->i + 4) == ' ' ||
+         prom_buf_at(l->s, l->s_size, l->i + 4) == '\t')) {
         l->start = l->i;
         l->i += 5;
 
-        while (buf_at(l->s, l->s_size, l->i) == ' ' ||
-               buf_at(l->s, l->s_size, l->i) == '\t')
+        while (prom_buf_at(l->s, l->s_size, l->i) == ' ' ||
+               prom_buf_at(l->s, l->s_size, l->i) == '\t')
             l->i += 1;
 
         l->state = LEX_STATE_META_1;
         return PROM_LEX_HELP;
     }
 
-    if (l->state == LEX_STATE_COMMENT && buf_at(l->s, l->s_size, l->i) == 'T' &&
-        buf_at(l->s, l->s_size, l->i + 1) == 'Y' &&
-        buf_at(l->s, l->s_size, l->i + 2) == 'P' &&
-        buf_at(l->s, l->s_size, l->i + 3) == 'E' &&
-        (buf_at(l->s, l->s_size, l->i + 4) == ' ' ||
-         buf_at(l->s, l->s_size, l->i + 4) == '\t')) {
+    if (l->state == LEX_STATE_COMMENT &&
+        prom_buf_at(l->s, l->s_size, l->i) == 'T' &&
+        prom_buf_at(l->s, l->s_size, l->i + 1) == 'Y' &&
+        prom_buf_at(l->s, l->s_size, l->i + 2) == 'P' &&
+        prom_buf_at(l->s, l->s_size, l->i + 3) == 'E' &&
+        (prom_buf_at(l->s, l->s_size, l->i + 4) == ' ' ||
+         prom_buf_at(l->s, l->s_size, l->i + 4) == '\t')) {
         l->start = l->i;
         l->i += 5;
 
-        while (buf_at(l->s, l->s_size, l->i) == ' ' ||
-               buf_at(l->s, l->s_size, l->i) == '\t')
+        while (prom_buf_at(l->s, l->s_size, l->i) == ' ' ||
+               prom_buf_at(l->s, l->s_size, l->i) == '\t')
             l->i += 1;
 
         l->state = LEX_STATE_META_1;
@@ -258,47 +261,48 @@ static int lex(struct lex* l) {
 
     if (l->state == LEX_STATE_COMMENT) {
         // Normal comment, free text
-        while (l->i < l->s_size && buf_at(l->s, l->s_size, l->i) != '\n')
+        while (l->i < l->s_size && prom_buf_at(l->s, l->s_size, l->i) != '\n')
             l->i += 1;
         return PROM_LEX_COMMENT;
     }
 
     if (l->state == LEX_STATE_META_1 &&
-        c_is_alpha_or_underscore_or_colon(buf_at(l->s, l->s_size, l->i))) {
+        c_is_alpha_or_underscore_or_colon(prom_buf_at(l->s, l->s_size, l->i))) {
         l->start = l->i;
 
-        while (
-            c_is_alpha_or_underscore_or_colon(buf_at(l->s, l->s_size, l->i)) ||
-            c_is_num(buf_at(l->s, l->s_size, l->i)))
+        while (c_is_alpha_or_underscore_or_colon(
+                   prom_buf_at(l->s, l->s_size, l->i)) ||
+               c_is_num(prom_buf_at(l->s, l->s_size, l->i)))
             l->i += 1;
 
         l->state = LEX_STATE_META_2;
         return PROM_LEX_METRIC_NAME;
     }
 
-    if (l->state == LEX_STATE_META_2 && buf_at(l->s, l->s_size, l->i) != '\n') {
+    if (l->state == LEX_STATE_META_2 &&
+        prom_buf_at(l->s, l->s_size, l->i) != '\n') {
         l->start = l->i;
 
-        while (l->i < l->s_size && buf_at(l->s, l->s_size, l->i) != '\n')
+        while (l->i < l->s_size && prom_buf_at(l->s, l->s_size, l->i) != '\n')
             l->i += 1;
         l->state = LEX_STATE_INIT;
         return PROM_LEX_TEXT;
     }
 
     if (l->state == LEX_STATE_INIT &&
-        c_is_alpha_or_underscore_or_colon(buf_at(l->s, l->s_size, l->i))) {
+        c_is_alpha_or_underscore_or_colon(prom_buf_at(l->s, l->s_size, l->i))) {
         l->start = l->i;
 
-        while (
-            c_is_alpha_or_underscore_or_colon(buf_at(l->s, l->s_size, l->i)) ||
-            c_is_num(buf_at(l->s, l->s_size, l->i)))
+        while (c_is_alpha_or_underscore_or_colon(
+                   prom_buf_at(l->s, l->s_size, l->i)) ||
+               c_is_num(prom_buf_at(l->s, l->s_size, l->i)))
             l->i += 1;
         l->state = LEX_STATE_METRIC_VALUE;
         return PROM_LEX_METRIC_NAME;
     }
 
     if (l->state == LEX_STATE_METRIC_VALUE &&
-        buf_at(l->s, l->s_size, l->i) == '{') {
+        prom_buf_at(l->s, l->s_size, l->i) == '{') {
         l->state = LEX_STATE_LABELS;
         l->start = l->i;
         l->i += 1;
@@ -306,36 +310,39 @@ static int lex(struct lex* l) {
     }
 
     if (l->state == LEX_STATE_LABELS &&
-        c_is_alpha_or_underscore(buf_at(l->s, l->s_size, l->i))) {
+        c_is_alpha_or_underscore(prom_buf_at(l->s, l->s_size, l->i))) {
         l->start = l->i;
-        while (c_is_alpha_or_underscore(buf_at(l->s, l->s_size, l->i)) ||
-               c_is_num(buf_at(l->s, l->s_size, l->i)))
+        while (c_is_alpha_or_underscore(prom_buf_at(l->s, l->s_size, l->i)) ||
+               c_is_num(prom_buf_at(l->s, l->s_size, l->i)))
             l->i += 1;
         return PROM_LEX_LABEL_NAME;
     }
 
-    if (l->state == LEX_STATE_LABELS && buf_at(l->s, l->s_size, l->i) == '}') {
+    if (l->state == LEX_STATE_LABELS &&
+        prom_buf_at(l->s, l->s_size, l->i) == '}') {
         l->state = LEX_STATE_METRIC_VALUE;
         l->start = l->i;
         l->i += 1;
         return PROM_LEX_CURLY_BRACE_RIGHT;
     }
 
-    if (l->state == LEX_STATE_LABELS && buf_at(l->s, l->s_size, l->i) == '=') {
+    if (l->state == LEX_STATE_LABELS &&
+        prom_buf_at(l->s, l->s_size, l->i) == '=') {
         l->state = LEX_STATE_LABEL_VALUE;
         l->start = l->i;
         l->i += 1;
         return PROM_LEX_EQUAL;
     }
 
-    if (l->state == LEX_STATE_LABELS && buf_at(l->s, l->s_size, l->i) == ',') {
+    if (l->state == LEX_STATE_LABELS &&
+        prom_buf_at(l->s, l->s_size, l->i) == ',') {
         l->start = l->i;
         l->i += 1;
         return PROM_LEX_COMMA;
     }
 
     if (l->state == LEX_STATE_LABEL_VALUE &&
-        buf_at(l->s, l->s_size, l->i) == '"') {
+        prom_buf_at(l->s, l->s_size, l->i) == '"') {
         l->i += 1;
         l->start = l->i;
         while (l->i < l->s_size) {
@@ -350,16 +357,16 @@ static int lex(struct lex* l) {
     }
 
     if (l->state == LEX_STATE_METRIC_VALUE &&
-        buf_at(l->s, l->s_size, l->i) != ' ' &&
-        buf_at(l->s, l->s_size, l->i) != '\t' &&
-        buf_at(l->s, l->s_size, l->i) != '\n' &&
-        buf_at(l->s, l->s_size, l->i) != '{') {
+        prom_buf_at(l->s, l->s_size, l->i) != ' ' &&
+        prom_buf_at(l->s, l->s_size, l->i) != '\t' &&
+        prom_buf_at(l->s, l->s_size, l->i) != '\n' &&
+        prom_buf_at(l->s, l->s_size, l->i) != '{') {
         l->start = l->i;
 
-        while (l->i < l->s_size && buf_at(l->s, l->s_size, l->i) != ' ' &&
-               buf_at(l->s, l->s_size, l->i) != '\t' &&
-               buf_at(l->s, l->s_size, l->i) != '\n' &&
-               buf_at(l->s, l->s_size, l->i) != '{')
+        while (l->i < l->s_size && prom_buf_at(l->s, l->s_size, l->i) != ' ' &&
+               prom_buf_at(l->s, l->s_size, l->i) != '\t' &&
+               prom_buf_at(l->s, l->s_size, l->i) != '\n' &&
+               prom_buf_at(l->s, l->s_size, l->i) != '{')
             l->i += 1;
 
         l->state = LEX_STATE_TIMESTAMP;
@@ -367,15 +374,15 @@ static int lex(struct lex* l) {
     }
 
     if (l->state == LEX_STATE_TIMESTAMP &&
-        c_is_num(buf_at(l->s, l->s_size, l->i))) {
+        c_is_num(prom_buf_at(l->s, l->s_size, l->i))) {
         l->start = l->i;
 
-        while (c_is_num(buf_at(l->s, l->s_size, l->i))) l->i += 1;
+        while (c_is_num(prom_buf_at(l->s, l->s_size, l->i))) l->i += 1;
         return PROM_LEX_TIMESTAMP;
     }
 
     if (l->state == LEX_STATE_TIMESTAMP &&
-        buf_at(l->s, l->s_size, l->i) == '\n') {
+        prom_buf_at(l->s, l->s_size, l->i) == '\n') {
         l->state = LEX_STATE_INIT;
         l->start = l->i;
         l->i += 1;
