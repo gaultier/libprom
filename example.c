@@ -8,7 +8,7 @@
 #include <unistd.h>
 #include "prom.h"
 
-static void metric_to_yml(const struct metric* m) {
+static void metric_to_yml(const struct prom_metric* m) {
     printf("- Name: \"");
     fwrite(m->metric_name, m->metric_name_size, 1, stdout);
 
@@ -96,7 +96,7 @@ int main(int argc, char* argv[]) {
     }
 
     size_t i = 0;
-    struct metric m;
+    struct prom_metric m;
     while ((err = prom_parse(input, input_size, ms_now, &i, &m, realloc)) ==
            PROM_PARSE_METRIC_OK) {
         metric_to_yml(&m);

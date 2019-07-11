@@ -38,7 +38,7 @@ enum PROM_METRIC_TYPE {
     PROM_METRIC_TYPE_SUMMARY,
 };
 
-struct metric {
+struct prom_metric {
     const unsigned char* metric_name;
     size_t metric_name_size;
     double value;
@@ -53,7 +53,7 @@ struct metric {
 };
 
 int prom_parse(const unsigned char* s, size_t s_size, long long int ms_now,
-               size_t* i, struct metric* m,
+               size_t* i, struct prom_metric* m,
                void* (*realloc_fn)(void* ptr, size_t size));
 
 // Start the implementation (i.e private stuff)
@@ -388,7 +388,7 @@ static int lex(struct lex* l) {
 struct prom_parser {
     struct lex l;
     long long int ms_now;
-    struct metric* m;
+    struct prom_metric* m;
     void* (*realloc_fn)(void* ptr, size_t size);
 };
 
@@ -513,7 +513,7 @@ static int parse_help(struct prom_parser* p, int ret) {
 }
 
 int prom_parse(const unsigned char* s, size_t s_size, long long int ms_now,
-               size_t* i, struct metric* m,
+               size_t* i, struct prom_metric* m,
                void* (*realloc_fn)(void* ptr, size_t size)) {
     if (*i >= s_size) return PROM_PARSE_END;
 

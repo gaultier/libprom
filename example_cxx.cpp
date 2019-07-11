@@ -19,7 +19,7 @@ int main() {
     int err = 0;
 
     size_t i = 0;
-    struct metric m;
+    struct prom_metric m;
     while ((err = prom_parse((const unsigned char*)input.data(), input.size(),
                              42, &i, &m, custom_alloc)) ==
            PROM_PARSE_METRIC_OK) {
