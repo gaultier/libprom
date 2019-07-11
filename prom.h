@@ -166,14 +166,14 @@ struct prom_lex {
     size_t start;
 };
 
-static int c_is_num(unsigned int c) { return c >= '0' && c <= '9'; }
+static int prom_c_is_num(unsigned int c) { return c >= '0' && c <= '9'; }
 
-static int c_is_alpha_or_underscore(unsigned int c) {
+static int prom_c_is_alpha_or_underscore(unsigned int c) {
     return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == '_');
 }
 
-static int c_is_alpha_or_underscore_or_colon(unsigned int c) {
-    return c_is_alpha_or_underscore(c) || c == ':';
+static int prom_c_is_alpha_or_underscore_or_colon(unsigned int c) {
+    return prom_c_is_alpha_or_underscore(c) || c == ':';
 }
 
 static unsigned char prom_buf_at(const unsigned char* s, size_t s_size,
@@ -267,12 +267,13 @@ static int prom_lex(struct prom_lex* l) {
     }
 
     if (l->state == LEX_STATE_META_1 &&
-        c_is_alpha_or_underscore_or_colon(prom_buf_at(l->s, l->s_size, l->i))) {
+        prom_c_is_alpha_or_underscore_or_colon(
+            prom_buf_at(l->s, l->s_size, l->i))) {
         l->start = l->i;
 
-        while (c_is_alpha_or_underscore_or_colon(
+        while (prom_c_is_alpha_or_underscore_or_colon(
                    prom_buf_at(l->s, l->s_size, l->i)) ||
-               c_is_num(prom_buf_at(l->s, l->s_size, l->i)))
+               prom_c_is_num(prom_buf_at(l->s, l->s_size, l->i)))
             l->i += 1;
 
         l->state = LEX_STATE_META_2;
@@ -289,13 +290,13 @@ static int prom_lex(struct prom_lex* l) {
         return PROM_LEX_TEXT;
     }
 
-    if (l->state == LEX_STATE_INIT &&
-        c_is_alpha_or_underscore_or_colon(prom_buf_at(l->s, l->s_size, l->i))) {
+    if (l->state == LEX_STATE_INIT && prom_c_is_alpha_or_underscore_or_colon(
+                                          prom_buf_at(l->s, l->s_size, l->i))) {
         l->start = l->i;
 
-        while (c_is_alpha_or_underscore_or_colon(
+        while (prom_c_is_alpha_or_underscore_or_colon(
                    prom_buf_at(l->s, l->s_size, l->i)) ||
-               c_is_num(prom_buf_at(l->s, l->s_size, l->i)))
+               prom_c_is_num(prom_buf_at(l->s, l->s_size, l->i)))
             l->i += 1;
         l->state = LEX_STATE_METRIC_VALUE;
         return PROM_LEX_METRIC_NAME;
@@ -310,10 +311,11 @@ static int prom_lex(struct prom_lex* l) {
     }
 
     if (l->state == LEX_STATE_LABELS &&
-        c_is_alpha_or_underscore(prom_buf_at(l->s, l->s_size, l->i))) {
+        prom_c_is_alpha_or_underscore(prom_buf_at(l->s, l->s_size, l->i))) {
         l->start = l->i;
-        while (c_is_alpha_or_underscore(prom_buf_at(l->s, l->s_size, l->i)) ||
-               c_is_num(prom_buf_at(l->s, l->s_size, l->i)))
+        while (
+            prom_c_is_alpha_or_underscore(prom_buf_at(l->s, l->s_size, l->i)) ||
+            prom_c_is_num(prom_buf_at(l->s, l->s_size, l->i)))
             l->i += 1;
         return PROM_LEX_LABEL_NAME;
     }
@@ -374,10 +376,10 @@ static int prom_lex(struct prom_lex* l) {
     }
 
     if (l->state == LEX_STATE_TIMESTAMP &&
-        c_is_num(prom_buf_at(l->s, l->s_size, l->i))) {
+        prom_c_is_num(prom_buf_at(l->s, l->s_size, l->i))) {
         l->start = l->i;
 
-        while (c_is_num(prom_buf_at(l->s, l->s_size, l->i))) l->i += 1;
+        while (prom_c_is_num(prom_buf_at(l->s, l->s_size, l->i))) l->i += 1;
         return PROM_LEX_TIMESTAMP;
     }
 
