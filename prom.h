@@ -448,7 +448,7 @@ static int parse_labels(struct prom_parser* p, int ret) {
     return lex_next(&p->l);
 }
 
-static int parse_type(struct prom_parser* p, int ret) {
+static int prom_parse_type(struct prom_parser* p, int ret) {
     if (ret != PROM_LEX_TYPE) return ret;
     if ((ret = lex_next(&p->l)) < 0) return ret;
 
@@ -547,7 +547,7 @@ int prom_parse(const unsigned char* s, size_t s_size, long long int ms_now,
             continue;
         }
         if (ret == PROM_LEX_TYPE) {
-            if ((ret = parse_type(&p, ret)) < 0) return ret;
+            if ((ret = prom_parse_type(&p, ret)) < 0) return ret;
             continue;
         }
         if (ret == PROM_LEX_METRIC_NAME) break;
