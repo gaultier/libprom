@@ -1,15 +1,14 @@
 # Libprom
 
-A minimalistic, C99 library to parse Prometheus metrics in their text format. It only depends on libc and does not allocate itself (you can pass it your custom allocator). See `example.c` and `example_cxx.cpp` for usage.
+A minimalistic, header-only C99 library to parse Prometheus metrics in their text format. It only depends on libc and does not use the system allocator (you can pass it your custom allocator). See `example.c` and `example_cxx.cpp` for usage.
 
 ## Use it
 
 - Run `make && make install`
 - Include `prom.h`
-- Link it with `-lprom`
-- Use the only function: `prom_parse`
+- Use the only public function: `prom_parse`
 
-Build the Docker image containing `libprom.a`: `make dbuild`
+Build the Docker image containing `prom.h`: `make dbuild`
 
 ## Ownership system
 
@@ -30,7 +29,7 @@ Errors are just an int defined in `prom.h` (`PROM_PARSE_x` defines). They should
 
 ## Develop
 
-Build: `make libprom_debug.a` for the library and `make prom_example_debug` for the example. 
+Build: `make example check` for the library and `make prom_example_debug` for the example. 
 
 Note: When using gcc, you will need to override the warnings like that: `make CFLAGS_COMMON="-std=c99 -Wall" <target>` (see Dockerfile for example).
 
