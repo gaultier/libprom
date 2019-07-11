@@ -488,7 +488,7 @@ static int prom_parse_type(struct prom_parser* p, int ret) {
     return 0;
 }
 
-static int parse_help(struct prom_parser* p, int ret) {
+static int prom_parse_help(struct prom_parser* p, int ret) {
     if (ret != PROM_LEX_HELP) return ret;
     if ((ret = lex_next(&p->l)) < 0) return ret;
 
@@ -543,7 +543,7 @@ int prom_parse(const unsigned char* s, size_t s_size, long long int ms_now,
             continue;
         }
         if (ret == PROM_LEX_HELP) {
-            if ((ret = parse_help(&p, ret)) < 0) return ret;
+            if ((ret = prom_parse_help(&p, ret)) < 0) return ret;
             continue;
         }
         if (ret == PROM_LEX_TYPE) {
