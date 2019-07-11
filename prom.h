@@ -158,7 +158,7 @@ enum lex_state {
     LEX_STATE_META_2 = 12,
 };
 
-struct lex {
+struct prom_lex {
     const unsigned char* s;
     size_t s_size;
     enum lex_state state;
@@ -181,7 +181,7 @@ static unsigned char prom_buf_at(const unsigned char* s, size_t s_size,
     return i < s_size ? s[i] : '\0';
 }
 
-static int lex(struct lex* l) {
+static int prom_lex(struct prom_lex* l) {
     if (prom_buf_at(l->s, l->s_size, l->i) == '\0') return PROM_LEX_END;
 
     if (prom_buf_at(l->s, l->s_size, l->i) == '\n') {
@@ -393,16 +393,16 @@ static int lex(struct lex* l) {
 }
 
 struct prom_parser {
-    struct lex l;
+    struct prom_lex l;
     long long int ms_now;
     struct prom_metric* m;
     void* (*realloc_fn)(void* ptr, size_t size);
 };
 
-static int prom_lex_next(struct lex* l) {
+static int prom_lex_next(struct prom_lex* l) {
     int ret = 0;
 
-    while ((ret = lex(l)) == PROM_LEX_WHITESPACE) {
+    while ((ret = prom_lex(l)) == PROM_LEX_WHITESPACE) {
     }
     return ret;
 }
