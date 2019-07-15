@@ -9,7 +9,7 @@ A minimalistic, header-only C99 library to parse Prometheus metrics in their tex
 # HELP allocated_bytes This metric tracks allocated bytes
 # Some comment
 allocated_bytes{tier="backend", environment="production"} 1000 1563167927
-foo 5 1563167928
+foo 5
 ```
 
 Prometheus is a monitoring system using a textual representation for metrics.
@@ -20,7 +20,7 @@ Hence this library.
 Here we have 2 metrics, the first one having a type comment, a help comment, a normal comments, and 2 labels, the second one having only the required parts: name and value.
 
 When running the C example program on this: 
-`./example_c /tmp/metric.readme $(date +%s)`, we get a YAML representation:
+`./example_c /tmp/metric.readme 1563167929`, we get a YAML representation:
 
 ```yaml
 - Name: "allocated_bytes"
@@ -33,11 +33,12 @@ When running the C example program on this:
     environment: "production"
 - Name: "foo"
   Value: 5.000000
-  Timestamp: 1563167928
+  Timestamp: 1563167929
   Type: untyped
 ```
 
 Note that comments are ignored per the Prometheus spec. One could extend the library to parse them as well if need be.
+Also note that metrics without a timestamp are given the command line timestamp, it posssibly being the current timestamp (e.g `date +%s`).
 
 
 And that's the essence of it! The library just parses the textual representation of metrics, you decide what to do whith them.
