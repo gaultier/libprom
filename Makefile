@@ -1,8 +1,9 @@
 .POSIX:
 .SUFFIX:
 
-CFLAGS ?= -std=c99 -Wall -Wextra -Wpedantic -fPIC -g -O2
-CXXFLAGS ?= -std=c++11 -Wall -Wextra -Wpedantic -fPIC -g -O2
+FLAGS_COMMON ?= -Wall -Wextra -Wpedantic -fPIC -g -O2
+CFLAGS ?= -std=c99 $(FLAGS_COMMON)
+CXXFLAGS ?= -std=c++11 $(FLAGS_COMMON)
 DESTDIR ?= /usr/local
 DOCKER_IMAGE ?= prom
 DOCKER_TAG ?= latest
